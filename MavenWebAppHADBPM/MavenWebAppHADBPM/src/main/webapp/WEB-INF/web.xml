@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>SearchPatient</servlet-name>
+        <servlet-class>com.mycompany.mavenwebapphadbpm.SearchPatient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InfoPatient</servlet-name>
+        <servlet-class>com.mycompany.mavenwebapphadbpm.InfoPatient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchDisease</servlet-name>
+        <servlet-class>com.mycompany.mavenwebapphadbpm.SearchDisease</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddPatient</servlet-name>
+        <servlet-class>com.mycompany.mavenwebapphadbpm.AddPatient</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPatient</servlet-name>
+        <url-pattern>/SearchPatient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchDisease</servlet-name>
+        <url-pattern>/SearchDisease</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InfoPatient</servlet-name>
+        <url-pattern>/InfoPatient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPatient</servlet-name>
+        <url-pattern>/AddPatient</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
