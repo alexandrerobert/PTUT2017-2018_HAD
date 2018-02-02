@@ -94,6 +94,8 @@ public class AddPatient extends HttpServlet {
         Info Entourage = new Info("Disease", entourage, "String");// hasValidEntourage
         Info Place = new Info("Disease", place, "String");// hasAccessiblePlace
         Info Note = new Info("Disease", note, "String");// hasNotes
+        Info Note2 = new Info("Disease", note, "String");// hasNotes        //test à enlever
+
         
         //Create ArrayList to insert in the file ontology
 	ArrayList<Info> infos = new ArrayList<>();
