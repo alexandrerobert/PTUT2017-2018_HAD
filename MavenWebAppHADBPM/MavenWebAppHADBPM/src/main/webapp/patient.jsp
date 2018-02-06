@@ -18,21 +18,21 @@
               <img src="materialize-css/person.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
               </div>
               <div id="info1" class="col s8">
-                <h5>Gil Pauline </h5> <br><br>
-                <b> Sexe : </b> female <br><br>
-                <b> Birth : </b> 03/02/1996 at Albi<br><br>
-                <b> Social Security Number : </b> 0156135761358 <br><br>
+                <h5><div id="names"></div></h5> <br><br>
+                <b> Sexe : </b> <div id="sexe"></div> <br><br>
+                <b> Birth : </b><div id="birth"></div></div><br><br>
+                <b> Social Security Number : </b> <div id="socialSecurityNumber"></div> <br><br>
                 <div class="right-align">
                   <a href="#" onclick="$('#info1').hide();$('#info2').show();"><i class="material-icons prefix">arrow_forward</i> </a>
                 </div>
               </div>
 
               <div id="info2" class="col s8">
-                <b> Adress : </b> 8 rue borrel - 81100 Castres <br><br>
-                <b> Phone number : </b> 06.22.67.51.92 <br><br>
-                <b> Email : </b> pauline.gil@hotmail.com <br><br>
-                <b> Marital Status : </b> Single <br><br>
-                <b> Internet Access : </b> yes <br><br>
+                <b> Adress : </b> <div id="adress"></div> <br><br>
+                <b> Phone number : </b> <div id="phoneNumber"></div> <br><br>
+                <b> Email : </b> <div id="email"></div> <br><br>
+                <b> Marital Status : </b> <div id="maritalStatus"></div> <br><br>
+                <b> Internet Access : </b> <div id="internet"></div>  <br><br>
                 <div class="left-align">
                   <a href="#" onclick="$('#info2').hide();$('#info1').show();"><i class="material-icons prefix">arrow_back</i> </a>
                 </div>
@@ -115,12 +115,7 @@
 
 
   <%@include file="pied.jsp" %>
-  <script>
-  $(document).ready(function () {
-    $("#info2").hide();
-    $("#patient_notes").hide();
-  });
-  </script>
+  <script type="text/javascript" src="patient.js"></script>
 
 </body>
 

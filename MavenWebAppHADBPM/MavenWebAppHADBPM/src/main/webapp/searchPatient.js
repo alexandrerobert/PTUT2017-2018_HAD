@@ -1,12 +1,12 @@
+
+
 $(document).ready(function () {
 
   var cards = document.getElementsByClassName("card");
 
   // Créé la carte d'un patient
-  var cardPatients = new Map();
-  var card = function (id, pat) {
-    cardPatients.set(id, pat);
-    // the card
+  var card = function (id, firstName, lastName) {
+
     var c = '<div class="pat col s12 m3">' +
     '<div id="pat-' + id + '" class="pat card">' +
     '<div class="card-image">' +
@@ -16,7 +16,7 @@ $(document).ready(function () {
     '</a>' +
     '</div>' +
     '<div class="card-content">' +
-    '<p>' + pat + '</p>' +
+    '<p>' + firstName + " " + lastName + '</p>' +
     '</div>' +
     '<div class="back-info">' +
     '<div class="info" style="visibility: hidden; display: none;">' +
@@ -28,35 +28,14 @@ $(document).ready(function () {
 
     // Add the cards to the page again with style !!!
     $('#place').append(c);
+
     // Make an effect
     $('#pat-' + id).hide();
     $('#pat-' + id).show(500);
 
-  };
-
-  // Performed every time a card is created
-  var clic = function () {
-    $('.card').each(function () {
-      $(this).click(function () {
-        console.log($(this));
-        // Check where the user has clicked
-        if ($(this).attr('id') === 'ajoutPat') {
-          window.location.assign('addPatient.jsp');
-        } else {
-          info = document.getElementsByClassName('infoPatient');
-          info['0'].style.visibility = "visible";
-          // var dataPatient = $.ajax({
-          //   url: 'InfoPatient',
-          //   method: 'GET',
-          //   success: function (data) {
-          //     console.log(val);
-          //     return val;
-          //   }, dataType: 'json',
-          //   async: false
-          // });
-        }
-
-      });
+    // Rediriger vers la page patient
+    $('#pat-' + id).click(function() {
+      window.location.href="patient.jsp?id="+id;
     });
   };
 
@@ -67,7 +46,7 @@ $(document).ready(function () {
     method: 'GET',
     success: function (data) {
       $.each(data.patients, function() {
-        patientsName = patientsName +  JSON.stringify(this.name) + ': null,';
+        patientsName = patientsName +  JSON.stringify(this.name + " " + this.lastName) + ': null,';
       });
       patientsName = patientsName.substring(0,patientsName.length-1);
       patientsName = patientsName + "}";
@@ -80,16 +59,10 @@ $(document).ready(function () {
   // Data retrieved by the ajax call
   var data = val.responseJSON;
   // Counter
-  var id = 0;
   // Patient for the autocomplete
 
-  var patientName;
   $(data.patients).each(function () {
-    // Limit the number of card on the page
-    if (id < 12) {            // create the card for the patient
-      card(id, this.name);
-    }
-    id++;
+    card(this.id, this.name, this.lastName);
   });
 
   // Give the Patient table to the autocomplete
@@ -101,36 +74,24 @@ $(document).ready(function () {
       $('.pat').each(function() {
         $(this).hide();
       });
-      card(0,val)
-      clic();
+      $(data.patients).each(function () {
+        if(val == this.name + " " + this.lastName)
+        card(this.id, this.name, this.lastName);
+      });
+
     }
   });
 
-  // Make all the cards clickable
-  clic();
-
   // Change the cards according to what is given by the input
   $('input.autocomplete').on('input', function () {
-    var filt = {};
-    // Value of the autocomplete
-    var pers = $(this).val();
-    // Counter
-    var i = 0;
-    $('.pat').each(function() {
-      $(this).hide();
-    });
-    // Look for the value among the patients
-    $(data.patients).each(function () {
-      if (pers.length > 0) {
-        // The value is in the data
-        if (this.name.indexOf(pers) !== -1) {
-          // Display the card
-          card(i,this.name);
-          i++;
-        }
-      }
-    });
-    clic();
+    if (this.value == ""){
+      $('.pat').each(function() {
+        $(this).hide();
+      });
+      $(data.patients).each(function () {
+        card(this.id, this.name, this.lastName);
+      });
+    }
   });
 
   // Initialise the collapsible
