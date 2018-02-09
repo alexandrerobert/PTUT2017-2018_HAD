@@ -55,14 +55,14 @@ public class InfoPatient extends HttpServlet {
         /**
          * A list of all the patients
          */
-        ArrayList<String> patienttList = onto.getPatientInOntology(reasoner, "Patient");
+//        ArrayList<String> patienttList = onto.getPatientInOntology(reasoner, "Patient");
         /**
          * A list of all the information of a patient
          */
         HashMap<String, String> ind = new  HashMap<>();
         
         // Look for a patient begining by the same patern
-        for (String pat : patienttList) {
+ /*       for (String pat : patienttList) {
             if (pat.contains(nom)) {
                 
                 if (cpt > 1) {
@@ -93,6 +93,7 @@ public class InfoPatient extends HttpServlet {
                 
             }
         }
+        */
         // Close the json file
         json += "      ]\n" +
                 "}";

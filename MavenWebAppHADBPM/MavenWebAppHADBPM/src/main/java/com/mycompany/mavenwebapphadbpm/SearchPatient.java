@@ -56,10 +56,10 @@ public class SearchPatient extends HttpServlet {
         /**
          * A list of all the patients
          */
-        ArrayList<String> patienttList = onto.getPatientInOntology(reasoner, "Patient");
-        System.out.println(patienttList);
+//        ArrayList<String> patienttList = onto.getPatientInOntology(reasoner, "Patient");
+//        System.out.println(patienttList);
         // Look for a patient begining by the same patern
-        for (String pat : patienttList) {
+/*        for (String pat : patienttList) {
             
             //if (pat.contains(nom)) {
                 
@@ -81,6 +81,7 @@ public class SearchPatient extends HttpServlet {
                 
             //}
         }
+*/        
         // Close the json file
         json += "      ]\n" +
                 "}";
