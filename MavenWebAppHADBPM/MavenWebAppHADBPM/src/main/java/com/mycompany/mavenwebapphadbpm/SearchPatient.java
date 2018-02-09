@@ -5,12 +5,11 @@
  */
 package com.mycompany.mavenwebapphadbpm;
 
+import Model.Patient;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 /**
- * Class That will handle the request when a user is looking for a patient
- * The main goal is to take the information about all the patient in the ontology
+ * Class That will handle the request when a user is looking for a patient The
+ * main goal is to take the information about all the patient in the ontology
  * folowwing the pattern given by the user of the web application.
+ *
  * @author lexr
  */
 public class SearchPatient extends HttpServlet {
@@ -36,67 +36,41 @@ public class SearchPatient extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         // JSON File Creation      
-        int cpt = 1;
-        String patients = "{";
-        String json = "{\n" +
-                "    \"patients\": [\n";
-        
+        String json = "{\"patients\": [\n";
+        int cpt = 1 ;
+
         // Intialisation
         //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
         File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); //Pauline
         //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
-        
-        // Pattern of the patient name
-        //String nom = request.getParameter("nom");
-        
+
         /**
          * A list of all the patients
          */
-//        ArrayList<String> patienttList = onto.getPatientInOntology(reasoner, "Patient");
-//        System.out.println(patienttList);
-        // Look for a patient begining by the same patern
-/*        for (String pat : patienttList) {
-            
-            //if (pat.contains(nom)) {
-                
-                if (cpt > 1) {
-                    json += ",";
-                    patients +=",";
-                }
-                
-                // Create the object for an individual
-		json += "{\"id\": \"" + cpt + "\",\n";
-                
-                json +="        \"name\": \""+ pat +"\"\n";
-                patients +="\"name\": "+ pat +"";
-                cpt++;
-                // Close the current individual object
-                if (!(cpt == pat.length()))
-                    json+="}";
-                
-                
-            //}
+        ArrayList<Patient> patientList = onto.getPatientInOntology(reasoner, "Patient");
+        for (Patient patient : patientList) {
+            if (cpt > 1) {
+                json += ",";
+            }
+            // Create the object for an individual
+            json += "{\"id\": \"" + patient.getId() + "\",\n";
+            json += "\"name\": \"" + patient.getFirstName() + "\",\n";
+            json += "\"lastName\": \"" + patient.getName() + "\"}\n";
+            cpt++;
         }
-*/        
+        
         // Close the json file
-        json += "      ]\n" +
-                "}";
-        patients += "}";
+        json += "      ]\n}";
         System.out.println(json);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
             out.println(json);
-            
         }
-        
-        
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

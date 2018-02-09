@@ -5,10 +5,12 @@
  */
 package com.mycompany.mavenwebapphadbpm;
 
+import Model.Patient;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -39,79 +41,46 @@ public class InfoPatient extends HttpServlet {
          // JSON File Creation      
         int cpt = 1;
         String json = "{\n" +
-                "    \"patients\": [\n";
+                "    \"info\": [\n";
         
         // Intialisation
         //File f = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
         File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); // Pauline
-
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
+        String id = request.getParameter("id");
+        Patient patient = onto.searchPatient("p123456789", reasoner);
+        System.out.println(patient.getFirstName());
         
-        
-        String nom = request.getParameter("nom");
-        
-        /**
-         * A list of all the patients
-         */
-//        ArrayList<String> patienttList = onto.getPatientInOntology(reasoner, "Patient");
-        /**
-         * A list of all the information of a patient
-         */
-        HashMap<String, String> ind = new  HashMap<>();
-        
-        // Look for a patient begining by the same patern
- /*       for (String pat : patienttList) {
-            if (pat.contains(nom)) {
-                
-                if (cpt > 1) {
-                    json += ",";
-                }
-                
-                // Look for properties for an individual
-                HashMap<String, String> propMap = onto.getIndividualProperties(reasoner, pat);
-                // Create the object for an individual
-		json += "{\"id\": \"" + cpt + "\",\n";
-                // Number of properties for an individual
-                int nb = 0;
-                // Look for the individual properties
-                for (Map.Entry<String, String> values:propMap.entrySet()) {
-                    // add information to the json file
-                    json +="        \""+ values.getKey() +"\": \"" + values.getValue() + "\"\n";
-                    
-                    nb++;
-                    // Look if we are at the end of the list for the properties of an individual
-                    if (!(propMap.size() == nb)) {
-                        json += ",";
-                    }
-                }
-                cpt++;
-                // Close the current individual object
-                if (!(cpt == pat.length()))
-                json+="}";
-                
-            }
-        }
-        */
-        // Close the json file
-        json += "      ]\n" +
-                "}";
-        
-        
+        json += "{\"name\": \"" + patient.getName() + "\"},\n";
+        json += "{\"firstName\": \"" + patient.getFirstName() + "\"},\n";
+        json += "{\"sexe\": \"" + patient.getSexe() + "\"},\n";
+        json += "{\"birth\": \"" + patient.getBirth() + "\"},\n";
+        json += "{\"placeBirth\": \"" + patient.getPlaceBirth() + "\"},\n";
+        json += "{\"socialSecurityNumber\": \"" + patient.getSocialSecurityNumber() + "\"},\n";
+        json += "{\"ipp\": \"" + patient.getIpp() + "\"},\n";
+        json += "{\"adress\": \"" + patient.getAdress() + "\"},\n";
+        json += "{\"phoneNumber\": \"" + patient.getPhoneNumber() + "\"},\n";
+        json += "{\"email\": \"" + patient.getEmail() + "\"},\n";
+        json += "{\"maritalStatus\": \"" + patient.getMaritalStatus() + "\"},\n";
+        json += "{\"isInternet\": \"" + patient.getIsInternet() + "\"},\n";
+        json += "{\"weight\": \"" + patient.getWeight() + "\"},\n";
+        json += "{\"size\": \"" + patient.getSize() + "\"},\n";
+        json += "{\"isValide\": \"" + patient.getIsValide() + "\"},\n";
+        json += "{\"allergies\": \"" + patient.getAllergies() + "\"},\n";
+        json += "{\"antecedents\": \"" + patient.getAntecedents() + "\"},\n";
+        json += "{\"validEntourage\": \"" + patient.getValidEntourage() + "\"},\n";
+        json += "{\"placeAccesible\": \"" + patient.getPlaceAccesible() + "\"},\n";
+        json += "{\"notes\": \"" + patient.getNotes() + "\"}\n";
+        json += "]}";
+        System.out.println(json);
         
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet InfoPatient</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet InfoPatient at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println(json);
         }
     }
 
