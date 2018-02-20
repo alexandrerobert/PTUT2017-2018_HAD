@@ -29,7 +29,7 @@
         <div class="col s12 m3">
           <div id="ajoutPat" class="card">
             <div class="card-image">
-              <img style="background-color: #f44336;" height="100">
+              <img style="background-color: #00897b;" height="100">
                 <span class="card-title">Add Patient</span>
                 <a class="btn-floating halfway-fab waves-effect waves-light red">
                   <i class="material-icons">add</i>

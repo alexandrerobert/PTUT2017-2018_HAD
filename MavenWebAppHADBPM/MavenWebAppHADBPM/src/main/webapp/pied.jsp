@@ -1,5 +1,5 @@
   <%@page contentType="text/html" pageEncoding="UTF-8"%>
-  <footer class="page-footer orange">
+  <footer class="page-footer" style="background-color:grey">
     <div class="footer-copyright">
       <div class="container center">
         <p> FIE4 - Promotion 2019 </p>
