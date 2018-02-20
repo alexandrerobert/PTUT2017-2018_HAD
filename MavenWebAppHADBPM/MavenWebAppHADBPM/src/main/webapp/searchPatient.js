@@ -68,7 +68,7 @@ $(document).ready(function () {
   // Give the Patient table to the autocomplete
   $('input.autocomplete').autocomplete({
     data: patientsName,
-    limit: 10, // The max amount of results that can be shown at once. Default: Infinity.
+    limit: 3, // The max amount of results that can be shown at once. Default: Infinity.
     minLength: 0, // The minimum length of the input for the autocomplete to start. Default: 1.
     onAutocomplete: function(val) {
       $('.pat').each(function() {

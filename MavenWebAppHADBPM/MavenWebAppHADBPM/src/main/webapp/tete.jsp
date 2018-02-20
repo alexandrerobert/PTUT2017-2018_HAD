@@ -14,12 +14,12 @@
 
       <body>
 
-        <nav class="orange" style="background-color: rgba(51,51,51,0.08);" role="navigation">
+        <nav style="background-color: grey" role="navigation">
           <div class="nav-wrapper container">
             <a href="index.jsp" class="brand-logo">#HADBPMN</a>
             <ul class="right col-xs-12">
               <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">more_vert</i></a></li>
-              <li><a href="#!"><i class="material-icons">power_settings_new</i></a></li>
+              <li><a href="login.jsp"><i class="material-icons">power_settings_new</i></a></li>
             </ul>
           </div>
 
