@@ -1,5 +1,6 @@
 package com.mycompany.mavenwebapphadbpm;
 
+import model.Patient;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 /**
- * Hello world!
+ * Class used only to test the methods that are in the Ontology.Java File
  *
  */
 public class App {
@@ -50,10 +51,10 @@ public class App {
 		
 		// Retrieve all the classes of the ontology
 		System.out.println("\t\t\tToutes les classes de l'ontologie");
-		for (OWLClass cls : onto.getAllClasses() ){
-			//System.out.println(cls.getIRI().getFragment());
-			System.out.println(cls.getIRI().getRemainder().get());
-		}
+//		for (OWLClass cls : onto.getAllClasses() ){
+//			//System.out.println(cls.getIRI().getFragment());
+//			System.out.println(cls.getIRI().getRemainder().get());
+//		}
 		
 		//ArrayList<String> liste = onto.getPatientInOntology(reasoner, "Patient");
 		// Affiche toutes les propriétés d'un patient
@@ -145,10 +146,15 @@ public class App {
                 System.out.println("Affichage des dataproperties pour vesicular avec la fonction test");
                 onto.test(reasoner, "VesicularPeritonitis");
                 */
-                
+               /* 
                 System.out.println("Essai de la nouvelle fonction pour l'interface searchPatient.jsp");
                 onto.getPatientInOntology(reasoner, "Patient");
                 
+                */
+                
+                
+                Patient pat = onto.getIndividualProperties(reasoner, "Remi");
+                System.out.println(pat);
         }	
 
 	

@@ -1,0 +1,2081 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/HCO.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/ontologies/2012/HCO.owl">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">HCO (HomeCare Ontology) by ZEFOUNI Sabrina
+</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#Action"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Actor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AdministrativeProfessional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AtHome"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BackOfficeActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CareGiver"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CareGiverProfessional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CaseManagementActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Day"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Disease"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Document"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Duration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EvaluationActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Frequency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HomeCare"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HomeCareProfessional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HomeCareStructure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hour"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HouseworkActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Intervention"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicalActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicalAnalysisLaboratory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicalProfessional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Minute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Month"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NursingActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParamedicsProfessional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Patient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PatientActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PharmacyProfessional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysiotherapyActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PsychoSocialProfessional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RehabilitativeActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Seconde"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpecialistPhysician"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Time"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TimeOfDay"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Week"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Year"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#InvolvesAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDisease"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFrequency"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#includesAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#involvesActor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#involvesPatient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isDiseaseOfPatient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFrequencyActionForDisease"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFrequencyDiseaseForAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFrequencyOfAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isInvolvedToCareDisease"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isPerformedByActor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isTimeOfDayToPerformsAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#performsAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#performsAtTimeOfDay"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#IsValide"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAdress"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAllergies"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasBMI"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDateOfAdmission"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDateOfBirth"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDateOfDischarge"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasEmail"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasFirstName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasInformation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasMaritalStatus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPhoneNumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPlaceOfBirth"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPrevious"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasReferenceNumberID"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSocialSecurityNumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasWeight"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isAccessiblePlace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isInternet"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isValideFamily"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ActorConfirmation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AgreeOnInterventions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AlimentationViaParenteralRoute"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Anaemia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Arthritis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AskInformation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AskIntervention"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AssessSocialNeedsAndNetwork"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AssignActor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AssignMembersOfEU"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AuthorizeNursingCareService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AuthorizeRehabilitation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BloodDrawing"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BloodSugarMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CareAid"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CareAndFittingOfProsthesisAndAnti-embolicStockings"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CareAndMaintenanceOfFeedingTubes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CareAndMaintenanceOfTracheostomy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CareAndMaintenanceOfUrostomicTubes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CareOfAnalgesicPump"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CatheterCare"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CerebrovascularDisease"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ChangesTheSheets"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ChronicIschaemicHeartDisease"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CleaningAgent"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CleaningRoom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CoachSocialNetwork"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ComplexWoundManagement"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ConfirmAppointment"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ConfirmOrModifyWaitingLists"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ContactSocialServiceProviders"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ControlPerformanceOfActivities"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DefineInterventionPlan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DefineOutcomes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DefineSocialIntevention"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Depression"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Diabetes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dietician"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ECG"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EnemaAdministration"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EstablishingAndReviewingStomaCareProgram"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EvaluateThroughScales"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Evening"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FamilyDoctor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ForwardTheBloodTransfusionRequest"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyAlimentationViaParenteralRouteVesicularPeritonitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyBloodDrawingVesicularPeritonitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsUndernutrition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsVesicularPeritonits"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyCleaningRoomUndernutrition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyCleaningRoomVesicularPeritonitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyHelpWithDressingAndBathingVesicularPeritonitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyPerfusionVesicularPeritonitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyPhysiotherapyVesicularPeritonits"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyPreparationOfPillBoxVesicularPeritonitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyVacuumAssistedClosureVesicularPeritonitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GiveConsent"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HeadNurse"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HelpWithDressingAndBathing"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IMInjection"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InsertionCareAndMantainanceOfPeripheralIntravenousInfusion"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InsulinTherapy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention10"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention7"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention8"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Intervention9"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IntravenousTherapy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Joelle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MaintenanceOfSkinIntegrity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mary"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MonitoringOfVitalSigns"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Morning"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NebulisersMeteredAerosolsTurbuhalersCanistersAndInhalersAssistance"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Night"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nurse"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nutritionist"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PerformAssistiveActions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PerformAssistiveDevices"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Perfusion"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PeritonitisVesicular"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pharmacist"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PhysicalTherapist"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Physiotherapy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PreparationOfPillBox"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PressureUlcerTreatment"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ProvideInformation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Psychologist"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ReferTheAdmitedPatientForCA"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RequestCertification"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ScheduleActivity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ScheduleControls"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ScheduleRe-evaluations"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Secretary"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SendMessageToThePatient"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SendTransfusionReport"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SimpleWoundDressings"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SocialWorker"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SpecimenCollection"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SpeechTherapist"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StomaMaintenance"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SuctioningAirways"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SuperviseAchievementOfActivities"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SuperviseAchievementOfSocialOutcomes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SuperviseHCPInformation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SuperviseIP"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TrainingOfCCP"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TreatmentOfOtherSkinLesions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Undernutrition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#VacuumAssistedClosure"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WriteNursingFollow-up"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WriteSocialReport"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#afternoon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#mauri"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1Day"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1Week"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1/2Day"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#2Day"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#2Week"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Remi"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#dateOfDischarge"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#AdministrativeProfessional"/>
+        <Class IRI="#HomeCareProfessional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AtHome"/>
+        <Class IRI="#HomeCareStructure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BackOfficeActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CareGiver"/>
+        <Class IRI="#Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CareGiverProfessional"/>
+        <Class IRI="#HomeCareProfessional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CaseManagementActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Day"/>
+        <Class IRI="#Duration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Duration"/>
+        <Class IRI="#Time"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EvaluationActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Frequency"/>
+        <Class IRI="#Time"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HomeCare"/>
+        <Class IRI="#HomeCareStructure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HomeCareProfessional"/>
+        <Class IRI="#Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hour"/>
+        <Class IRI="#Duration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HouseworkActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intervention"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#includesAction"/>
+            <Class IRI="#Action"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intervention"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#involvesActor"/>
+            <Class IRI="#Actor"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intervention"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#involvesPatient"/>
+            <Class IRI="#Patient"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicalActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicalAnalysisLaboratory"/>
+        <Class IRI="#HomeCareStructure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicalProfessional"/>
+        <Class IRI="#HomeCareProfessional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Minute"/>
+        <Class IRI="#Duration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Month"/>
+        <Class IRI="#Duration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NursingActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NursingActivity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#isPerformedByActor"/>
+            <Class IRI="#ParamedicsProfessional"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParamedicsProfessional"/>
+        <Class IRI="#HomeCareProfessional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParamedicsProfessional"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#performsAction"/>
+            <ObjectUnionOf>
+                <Class IRI="#HouseworkActivity"/>
+                <Class IRI="#NursingActivity"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patient"/>
+        <Class IRI="#Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PatientActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PharmacyProfessional"/>
+        <Class IRI="#HomeCareProfessional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysiotherapyActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PsychoSocialProfessional"/>
+        <Class IRI="#HomeCareProfessional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RehabilitativeActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Seconde"/>
+        <Class IRI="#Duration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialActivity"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpecialistPhysician"/>
+        <Class IRI="#MedicalProfessional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Time"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TimeOfDay"/>
+        <Class IRI="#Time"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Week"/>
+        <Class IRI="#Duration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Year"/>
+        <Class IRI="#Duration"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Action"/>
+        <Class IRI="#Actor"/>
+        <Class IRI="#Disease"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Action"/>
+        <Class IRI="#Actor"/>
+        <Class IRI="#Disease"/>
+        <Class IRI="#Document"/>
+        <Class IRI="#HomeCareStructure"/>
+        <Class IRI="#Intervention"/>
+        <Class IRI="#Time"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#ActorConfirmation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PatientActivity"/>
+        <NamedIndividual IRI="#AgreeOnInterventions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#AlimentationViaParenteralRoute"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#Anaemia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#Arthritis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#AskInformation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PatientActivity"/>
+        <NamedIndividual IRI="#AskIntervention"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialActivity"/>
+        <NamedIndividual IRI="#AssessSocialNeedsAndNetwork"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#AssignActor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#AssignMembersOfEU"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#AuthorizeNursingCareService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#AuthorizeRehabilitation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#BloodDrawing"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#BloodSugarMeasurement"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ParamedicsProfessional"/>
+        <NamedIndividual IRI="#CareAid"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#CareAndFittingOfProsthesisAndAnti-embolicStockings"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#CareAndMaintenanceOfFeedingTubes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#CareAndMaintenanceOfTracheostomy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#CareAndMaintenanceOfUrostomicTubes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#CareOfAnalgesicPump"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#CatheterCare"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#CerebrovascularDisease"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HouseworkActivity"/>
+        <NamedIndividual IRI="#ChangesTheSheets"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#ChronicIschaemicHeartDisease"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CareGiverProfessional"/>
+        <NamedIndividual IRI="#CleaningAgent"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HouseworkActivity"/>
+        <NamedIndividual IRI="#CleaningRoom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialActivity"/>
+        <NamedIndividual IRI="#CoachSocialNetwork"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#ComplexWoundManagement"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PatientActivity"/>
+        <NamedIndividual IRI="#ConfirmAppointment"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#ConfirmOrModifyWaitingLists"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialActivity"/>
+        <NamedIndividual IRI="#ContactSocialServiceProviders"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CaseManagementActivity"/>
+        <NamedIndividual IRI="#ControlPerformanceOfActivities"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#EvaluationActivity"/>
+        <NamedIndividual IRI="#DefineInterventionPlan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#EvaluationActivity"/>
+        <NamedIndividual IRI="#DefineOutcomes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialActivity"/>
+        <NamedIndividual IRI="#DefineSocialIntevention"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#Depression"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#Diabetes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ParamedicsProfessional"/>
+        <NamedIndividual IRI="#Dietician"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#ECG"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#EnemaAdministration"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#EstablishingAndReviewingStomaCareProgram"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#EvaluationActivity"/>
+        <NamedIndividual IRI="#EvaluateThroughScales"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimeOfDay"/>
+        <NamedIndividual IRI="#Evening"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MedicalProfessional"/>
+        <NamedIndividual IRI="#FamilyDoctor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#ForwardTheBloodTransfusionRequest"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyAlimentationViaParenteralRouteVesicularPeritonitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyBloodDrawingVesicularPeritonitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsUndernutrition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsVesicularPeritonits"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyCleaningRoomUndernutrition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyCleaningRoomVesicularPeritonitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyHelpWithDressingAndBathingVesicularPeritonitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyPerfusionVesicularPeritonitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyPhysiotherapyVesicularPeritonits"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyPreparationOfPillBoxVesicularPeritonitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+        <NamedIndividual IRI="#FrequencyVacuumAssistedClosureVesicularPeritonitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PatientActivity"/>
+        <NamedIndividual IRI="#GiveConsent"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ParamedicsProfessional"/>
+        <NamedIndividual IRI="#HeadNurse"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#HelpWithDressingAndBathing"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#IMInjection"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#InsertionCareAndMantainanceOfPeripheralIntravenousInfusion"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#InsulinTherapy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#IntravenousTherapy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Patient"/>
+        <NamedIndividual IRI="#Joelle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#MaintenanceOfSkinIntegrity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Patient"/>
+        <NamedIndividual IRI="#Mary"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#MonitoringOfVitalSigns"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimeOfDay"/>
+        <NamedIndividual IRI="#Morning"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#NebulisersMeteredAerosolsTurbuhalersCanistersAndInhalersAssistance"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimeOfDay"/>
+        <NamedIndividual IRI="#Night"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ParamedicsProfessional"/>
+        <NamedIndividual IRI="#Nurse"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SpecialistPhysician"/>
+        <NamedIndividual IRI="#Nutritionist"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialActivity"/>
+        <NamedIndividual IRI="#PerformAssistiveActions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialActivity"/>
+        <NamedIndividual IRI="#PerformAssistiveDevices"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#Perfusion"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PharmacyProfessional"/>
+        <NamedIndividual IRI="#Pharmacist"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ParamedicsProfessional"/>
+        <NamedIndividual IRI="#PhysicalTherapist"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PhysiotherapyActivity"/>
+        <NamedIndividual IRI="#Physiotherapy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#PreparationOfPillBox"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#PressureUlcerTreatment"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#ProvideInformation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PsychoSocialProfessional"/>
+        <NamedIndividual IRI="#Psychologist"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#ReferTheAdmitedPatientForCA"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Patient"/>
+        <NamedIndividual IRI="#Remi"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PatientActivity"/>
+        <NamedIndividual IRI="#RequestCertification"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#ScheduleActivity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#EvaluationActivity"/>
+        <NamedIndividual IRI="#ScheduleControls"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#EvaluationActivity"/>
+        <NamedIndividual IRI="#ScheduleRe-evaluations"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdministrativeProfessional"/>
+        <NamedIndividual IRI="#Secretary"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#SendMessageToThePatient"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#SendTransfusionReport"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#SimpleWoundDressings"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PsychoSocialProfessional"/>
+        <NamedIndividual IRI="#SocialWorker"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#SpecimenCollection"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ParamedicsProfessional"/>
+        <NamedIndividual IRI="#SpeechTherapist"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#StomaMaintenance"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#SuctioningAirways"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CaseManagementActivity"/>
+        <NamedIndividual IRI="#SuperviseAchievementOfActivities"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialActivity"/>
+        <NamedIndividual IRI="#SuperviseAchievementOfSocialOutcomes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BackOfficeActivity"/>
+        <NamedIndividual IRI="#SuperviseHCPInformation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CaseManagementActivity"/>
+        <NamedIndividual IRI="#SuperviseIP"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#TrainingOfCCP"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#TreatmentOfOtherSkinLesions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#Undernutrition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#VacuumAssistedClosure"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NursingActivity"/>
+        <NamedIndividual IRI="#WriteNursingFollow-up"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialActivity"/>
+        <NamedIndividual IRI="#WriteSocialReport"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimeOfDay"/>
+        <NamedIndividual IRI="#afternoon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Patient"/>
+        <NamedIndividual IRI="#mauri"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Frequency"/>
+        <NamedIndividual IRI="#1Day"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Frequency"/>
+        <NamedIndividual IRI="#1Week"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Frequency"/>
+        <NamedIndividual IRI="#1/2Day"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Frequency"/>
+        <NamedIndividual IRI="#2Day"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Frequency"/>
+        <NamedIndividual IRI="#2Week"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#AlimentationViaParenteralRoute"/>
+        <NamedIndividual IRI="#FrequencyAlimentationViaParenteralRouteVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#BloodDrawing"/>
+        <NamedIndividual IRI="#FrequencyBloodDrawingVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#CareAid"/>
+        <NamedIndividual IRI="#ChangesTheSheets"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#CareAid"/>
+        <NamedIndividual IRI="#HelpWithDressingAndBathing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#CareAid"/>
+        <NamedIndividual IRI="#PreparationOfPillBox"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#ChangesTheSheets"/>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsUndernutrition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#ChangesTheSheets"/>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsVesicularPeritonits"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#CleaningAgent"/>
+        <NamedIndividual IRI="#CleaningRoom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#CleaningRoom"/>
+        <NamedIndividual IRI="#FrequencyCleaningRoomUndernutrition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#CleaningRoom"/>
+        <NamedIndividual IRI="#FrequencyCleaningRoomVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyAlimentationViaParenteralRouteVesicularPeritonitis"/>
+        <NamedIndividual IRI="#2Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyBloodDrawingVesicularPeritonitis"/>
+        <NamedIndividual IRI="#2Week"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsUndernutrition"/>
+        <NamedIndividual IRI="#1/2Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsVesicularPeritonits"/>
+        <NamedIndividual IRI="#1Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyCleaningRoomUndernutrition"/>
+        <NamedIndividual IRI="#1Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyCleaningRoomVesicularPeritonitis"/>
+        <NamedIndividual IRI="#1Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyHelpWithDressingAndBathingVesicularPeritonitis"/>
+        <NamedIndividual IRI="#1Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyPerfusionVesicularPeritonitis"/>
+        <NamedIndividual IRI="#2Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyPhysiotherapyVesicularPeritonits"/>
+        <NamedIndividual IRI="#1Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyPreparationOfPillBoxVesicularPeritonitis"/>
+        <NamedIndividual IRI="#1Week"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <NamedIndividual IRI="#FrequencyVacuumAssistedClosureVesicularPeritonitis"/>
+        <NamedIndividual IRI="#1/2Day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#HeadNurse"/>
+        <NamedIndividual IRI="#ControlPerformanceOfActivities"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#HelpWithDressingAndBathing"/>
+        <NamedIndividual IRI="#FrequencyHelpWithDressingAndBathingVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDisease"/>
+        <NamedIndividual IRI="#Joelle"/>
+        <NamedIndividual IRI="#Undernutrition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDisease"/>
+        <NamedIndividual IRI="#Joelle"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDisease"/>
+        <NamedIndividual IRI="#Mary"/>
+        <NamedIndividual IRI="#PeritonitisVesicular"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDisease"/>
+        <NamedIndividual IRI="#Mary"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#Nurse"/>
+        <NamedIndividual IRI="#AlimentationViaParenteralRoute"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#Nurse"/>
+        <NamedIndividual IRI="#BloodDrawing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#Nurse"/>
+        <NamedIndividual IRI="#BloodSugarMeasurement"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#Nurse"/>
+        <NamedIndividual IRI="#HelpWithDressingAndBathing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#Nurse"/>
+        <NamedIndividual IRI="#IMInjection"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#Nurse"/>
+        <NamedIndividual IRI="#VacuumAssistedClosure"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#Perfusion"/>
+        <NamedIndividual IRI="#FrequencyPerfusionVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#performsAction"/>
+        <NamedIndividual IRI="#PhysicalTherapist"/>
+        <NamedIndividual IRI="#Physiotherapy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#Physiotherapy"/>
+        <NamedIndividual IRI="#FrequencyPhysiotherapyVesicularPeritonits"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#PreparationOfPillBox"/>
+        <NamedIndividual IRI="#FrequencyPreparationOfPillBoxVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDisease"/>
+        <NamedIndividual IRI="#Remi"/>
+        <NamedIndividual IRI="#Undernutrition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#Undernutrition"/>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsUndernutrition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <NamedIndividual IRI="#VacuumAssistedClosure"/>
+        <NamedIndividual IRI="#FrequencyVacuumAssistedClosureVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#AlimentationViaParenteralRoute"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#BloodDrawing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#ChangesTheSheets"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#CleaningRoom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#HelpWithDressingAndBathing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#Perfusion"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#Physiotherapy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#PreparationOfPillBox"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#VacuumAssistedClosure"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyAlimentationViaParenteralRouteVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyBloodDrawingVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyChangesTheSheetsVesicularPeritonits"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyCleaningRoomVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyHelpWithDressingAndBathingVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyPerfusionVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyPhysiotherapyVesicularPeritonits"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyPreparationOfPillBoxVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+        <NamedIndividual IRI="#FrequencyVacuumAssistedClosureVesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDisease"/>
+        <NamedIndividual IRI="#mauri"/>
+        <NamedIndividual IRI="#VesicularPeritonitis"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasEmail"/>
+        <NamedIndividual IRI="#Joelle"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">joelle@gmail.com</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasFirstName"/>
+        <NamedIndividual IRI="#Joelle"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Joelle</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#dateOfDischarge"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">05/07/2017</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAdress"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">9 Downing Street</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAllergies"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Gluten</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasBMI"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">60</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDateOfAdmission"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">12/10/2011</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDateOfBirth"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">25/10/1985</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasEmail"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">remi.gaillard@lol.com</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasFirstName"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Rémi</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasMaritalStatus"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Married</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasName"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Gaillard</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPlaceOfBirth"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Lodon</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasSex"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Male</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasSize"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">160.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasSocialSecurityNumber"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">12345678</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasWeight"/>
+        <NamedIndividual IRI="#Remi"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">85.0</Literal>
+    </DataPropertyAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <ObjectProperty IRI="#isInvolvedToCareDisease"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasDisease"/>
+        <ObjectProperty IRI="#isDiseaseOfPatient"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <ObjectProperty IRI="#isFrequencyOfAction"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <ObjectProperty IRI="#isFrequencyDiseaseForAction"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <ObjectProperty IRI="#isFrequencyActionForDisease"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isPerformedByActor"/>
+        <ObjectProperty IRI="#performsAction"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isTimeOfDayToPerformsAction"/>
+        <ObjectProperty IRI="#performsAtTimeOfDay"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDisease"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#includesAction"/>
+        <Class IRI="#Intervention"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#involvesActor"/>
+        <Class IRI="#Intervention"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#involvesPatient"/>
+        <Class IRI="#Intervention"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isDiseaseOfPatient"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFrequencyActionForDisease"/>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFrequencyDiseaseForAction"/>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFrequencyOfAction"/>
+        <Class IRI="#Frequency"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isInvolvedToCareDisease"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isPerformedByActor"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isTimeOfDayToPerformsAction"/>
+        <Class IRI="#TimeOfDay"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#performsAction"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#performsAtTimeOfDay"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#InvolvesAction"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDisease"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFrequency"/>
+        <Class IRI="#Frequency"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFrequencyForAction"/>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFrequencyForDisease"/>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#includesAction"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#involvesActor"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#involvesPatient"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isDiseaseOfPatient"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFrequencyActionForDisease"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFrequencyDiseaseForAction"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFrequencyOfAction"/>
+        <Class IRI="#FrequencyOfActionToDisease"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isInvolvedToCareDisease"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isPerformedByActor"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isTimeOfDayToPerformsAction"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#performsAction"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#performsAtTimeOfDay"/>
+        <Class IRI="#TimeOfDay"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasPlaceOfBirth"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasSex"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#IsValide"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAdress"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAllergies"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasBMI"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDateOfAdmission"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDateOfBirth"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDateOfDischarge"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasEmail"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasFirstName"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasInformation"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasMaritalStatus"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasName"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPhoneNumber"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPlaceOfBirth"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPrevious"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasReferenceNumberID"/>
+        <Class IRI="#Patient"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSex"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSize"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSocialSecurityNumber"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasWeight"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isAccessiblePlace"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isInternet"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isValideFamily"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#IsValide"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAdress"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAllergies"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasBMI"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDateOfAdmission"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDateOfBirth"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDateOfDischarge"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasEmail"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasFirstName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasInformation"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasMaritalStatus"/>
+        <DataOneOf>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Divorced</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Legally separated</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Married</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Single</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Widowed</Literal>
+        </DataOneOf>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPhoneNumber"/>
+        <Datatype abbreviatedIRI="xsd:nonNegativeInteger"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPlaceOfBirth"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPrevious"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasReferenceNumberID"/>
+        <Datatype abbreviatedIRI="xsd:nonNegativeInteger"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSex"/>
+        <DataOneOf>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Female</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Male</Literal>
+        </DataOneOf>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSize"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSocialSecurityNumber"/>
+        <Datatype abbreviatedIRI="xsd:nonNegativeInteger"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasWeight"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isAccessiblePlace"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isInternet"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isValideFamily"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Patient"/>
+                <Variable IRI="urn:swrl#PatientID"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#InvolvesAction"/>
+                <Variable IRI="urn:swrl#DiseaseID"/>
+                <Variable IRI="urn:swrl#ActionsID"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasDisease"/>
+                <Variable IRI="urn:swrl#PatientID"/>
+                <Variable IRI="urn:swrl#DiseaseID"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#performsAction"/>
+                <Variable IRI="urn:swrl#ActorID"/>
+                <Variable IRI="urn:swrl#ActionID"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#Actor"/>
+                <Variable IRI="urn:swrl#ActorID"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Intervention</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">A set of actions performed in a space-time by a specific actor (medical, paramedical, etc..) on a specific patient.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Time</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Time represents all entities in relation to time (duration, frequency, ...)</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.0.2017-03-29T23:31:42Z) https://github.com/owlcs/owlapi/ -->
+
+

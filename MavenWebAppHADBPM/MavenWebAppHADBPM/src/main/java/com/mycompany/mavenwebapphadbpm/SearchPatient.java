@@ -5,7 +5,7 @@
  */
 package com.mycompany.mavenwebapphadbpm;
 
-import Model.Patient;
+import model.Patient;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;

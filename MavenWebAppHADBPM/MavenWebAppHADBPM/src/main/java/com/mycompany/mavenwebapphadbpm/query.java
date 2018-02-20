@@ -1,6 +1,6 @@
 package com.mycompany.mavenwebapphadbpm;
 
-import Model.Intervention;
+import model.Intervention;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;

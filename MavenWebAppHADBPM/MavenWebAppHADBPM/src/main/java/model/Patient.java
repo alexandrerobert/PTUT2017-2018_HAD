@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.util.Date;
 
@@ -16,8 +16,8 @@ private int phoneNumber;
 private String email;
 private MaritalStatus maritalStatus; 
 private Boolean isInternet;
-private int weight;
-private int size;
+private float weight;
+private float size;
 private Boolean isValide;
 private String allergies;
 private String pathology;
@@ -29,7 +29,7 @@ private String id;
 
 public Patient(){}
  
-public Patient(String id, String name, String firstName, Sexe sexe, Date birth, String placeBirth, int socialSecurityNumber, String ipp, String adress, int phoneNumber, MaritalStatus maritalStatus, String email, Boolean isInternet, int weight, int size, Boolean isValide, String allergies, String pathology, String antecedents, Boolean validEntourage, Boolean placeAccesible, String notes) {
+public Patient(String id, String name, String firstName, Sexe sexe, Date birth, String placeBirth, int socialSecurityNumber, String ipp, String adress, int phoneNumber, MaritalStatus maritalStatus, String email, Boolean isInternet, float weight, float size, Boolean isValide, String allergies, String pathology, String antecedents, Boolean validEntourage, Boolean placeAccesible, String notes) {
          this.name = name;
         this.firstName = firstName;
          this.sexe = sexe;
@@ -157,19 +157,19 @@ public Patient(String id, String name, String firstName, Sexe sexe, Date birth, 
          this.isInternet = isInternet;
      }
  
-     public int getWeight() {
+     public float getWeight() {
          return weight;
      }
  
-     public void setWeight(int weight) {
+     public void setWeight(float weight) {
          this.weight = weight;
      }
  
-     public int getSize() {
+     public float getSize() {
          return size;
      }
  
-     public void setSize(int size) {
+     public void setSize(float size) {
          this.size = size;
      }
  
@@ -228,5 +228,10 @@ public Patient(String id, String name, String firstName, Sexe sexe, Date birth, 
      public void setNotes(String notes) {
          this.notes = notes;
      }
+
+    @Override
+    public String toString() {
+        return "Patient{" + "name=" + name + ", firstName=" + firstName + ", sexe=" + sexe + ", birth=" + birth + ", placeBirth=" + placeBirth + ", socialSecurityNumber=" + socialSecurityNumber + ", ipp=" + ipp + ", adress=" + adress + ", phoneNumber=" + phoneNumber + ", email=" + email + ", maritalStatus=" + maritalStatus + ", isInternet=" + isInternet + ", weight=" + weight + ", size=" + size + ", isValide=" + isValide + ", allergies=" + allergies + ", pathology=" + pathology + ", antecedents=" + antecedents + ", validEntourage=" + validEntourage + ", placeAccesible=" + placeAccesible + ", notes=" + notes + ", id=" + id + '}';
+    }
      
  }

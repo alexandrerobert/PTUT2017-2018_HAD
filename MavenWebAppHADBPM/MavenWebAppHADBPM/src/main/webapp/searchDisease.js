@@ -1,8 +1,8 @@
 function showInter(id){
   for(i=0; i<5; i++){
-    $("#tab" + i).removeClass("active");
     
     $("#inter-" + i).hide();
+    $("#tab-" + i).removeClass("active");
   }
   $("#tab-" + id).addClass("active");
   $("#inter-" + id).show();
@@ -11,7 +11,6 @@ function showInter(id){
 
 
 $(document).ready(function () {
-
   // var listDisease;
   // var tab = '{}';
   //
@@ -41,7 +40,7 @@ $(document).ready(function () {
        
        // Create the pagination
        $(this.interventions).each(function() {
-              page = page + '<li id="tab-' + idInter + '" class="waves-effect"><a onclick="showInter(' + idInter + ')">' + this.name + '</a></li>';
+              page = page + '<li id="tab-' + idInter + '" class="waves-effect"><a onclick="showInter(' + idInter + ');">' + this.name + '</a></li>';
               idInter++;
         });
        

@@ -8,6 +8,6 @@
     background-color: #ffe0b2;
 }
 
-li.active {
+.list-disease ul.pagination li.active {
     background-color: #ff9800;
 }
