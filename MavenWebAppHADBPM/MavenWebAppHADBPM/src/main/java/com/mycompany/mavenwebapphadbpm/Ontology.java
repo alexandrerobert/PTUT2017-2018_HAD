@@ -19,6 +19,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.MaritalStatus;
 import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxEditorParser;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -223,7 +224,7 @@ public class Ontology {
                 for (OWLLiteral ind : values) {
                     try {
                         switch (p.getIRI().getRemainder().get()) {
-                            case "hasLastName":
+                            case "hasName":
                                 pat.setName(ind.getLiteral());
                                 break;
                             case "hasFirstName":
@@ -249,7 +250,7 @@ public class Ontology {
                             case "hasSocialSecurityNumber":
                                 pat.setSocialSecurityNumber(Integer.parseInt(ind.getLiteral()));
                                 break;
-                            case "hasAddress":
+                            case "hasAdress":
                                 pat.setAdress(ind.getLiteral());
                                 break;
                             case "hasPhoneNumber":
@@ -259,10 +260,33 @@ public class Ontology {
                                 pat.setEmail(ind.getLiteral());
                                 break;
                             case "hasMaritalStatus":
-                                //pat.setMaritalStatus(ind.getLiteral());
+                                switch (ind.getLiteral()) {
+                                    case "Divorced":
+                                        pat.setMaritalStatus(MaritalStatus.divorced);
+                                        break;
+                                    case "Legelly separated":
+                                        pat.setMaritalStatus(MaritalStatus.legallySeparated);
+                                        break;
+                                    case "Married":
+                                        pat.setMaritalStatus(MaritalStatus.married);
+                                        break;
+                                    case "Single":
+                                        pat.setMaritalStatus(MaritalStatus.single);
+                                        break;
+                                    case "Widowed":
+                                        pat.setMaritalStatus(MaritalStatus.widowed);
+                                        break;                                   
+                                }
                                 break;
-                            case "hasInternetAccess":
-                                //pat.setIsInternet(ind.getLiteral());
+                            case "isInternet":
+                                switch (ind.getLiteral()) {
+                                    case "true":
+                                        pat.setIsInternet(Boolean.TRUE);
+                                        break;
+                                    case "false":
+                                        pat.setIsInternet(Boolean.FALSE);
+                                        break;
+                                }
                                 break;
                             case "hasSize":
                                 pat.setSize(Float.parseFloat(ind.getLiteral()));
@@ -480,11 +504,9 @@ public class Ontology {
 
             // Set the Number of time it has to be performed
             // Set the moment of the day that have to be performed
-            String moment = "isTimeOfDayToPerformsAction value " + a;
-            ArrayList<String> listMoment = b.DLQuery(moment);
-            if (!listMoment.isEmpty()) {
-                inter.setMoment(listMoment);
-            }
+
+
+
 
             // Add the complete intervention to the list
             actions.add(inter);

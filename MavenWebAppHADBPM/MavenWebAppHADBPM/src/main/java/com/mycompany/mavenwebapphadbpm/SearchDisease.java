@@ -67,8 +67,7 @@ public class SearchDisease extends HttpServlet {
                     json += "\t\t\t\t\"frequency\" : \"" + i.getFrequency() + "\",\n";
                     json += "\t\t\t\t\"unityFrequence\" : \"" + i.getUnityFrequency()+ "\",\n";
                     json += "\t\t\t\t\"timeofDay\" : \"" + i.getTimeDay()+ "\",\n";
-                    json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure()+ "\",\n";
-                    json += "\t\t\t\t\"moment\" : \"" + i.getMoment()+ "\"\n\t\t},";
+                    json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure()+ "\",\n\t\t},";
                     cpt++;
                 }
                 // Delete the last coma for the actions

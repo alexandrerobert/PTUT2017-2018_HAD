@@ -46,11 +46,11 @@ public class InfoPatient extends HttpServlet {
         // Intialisation
         //File f = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
-        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); // Pauline
+        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO1.owl"); // Pauline
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
         String id = request.getParameter("id");
-        Patient patient = onto.searchPatient("p123456789", reasoner);
+        Patient patient = onto.getIndividualProperties(reasoner,id);
         System.out.println(patient.getFirstName());
         
         json += "{\"name\": \"" + patient.getName() + "\"},\n";
@@ -72,7 +72,8 @@ public class InfoPatient extends HttpServlet {
         json += "{\"antecedents\": \"" + patient.getAntecedents() + "\"},\n";
         json += "{\"validEntourage\": \"" + patient.getValidEntourage() + "\"},\n";
         json += "{\"placeAccesible\": \"" + patient.getPlaceAccesible() + "\"},\n";
-        json += "{\"notes\": \"" + patient.getNotes() + "\"}\n";
+        json += "{\"notes\": \"" + patient.getNotes() + "\"},\n";
+        json += "{\"diseases\": \"" + patient.getDiseases() + "\"}\n";
         json += "]}";
         System.out.println(json);
         

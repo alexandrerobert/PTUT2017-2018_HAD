@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Patient {
@@ -20,7 +21,7 @@ private float weight;
 private float size;
 private Boolean isValide;
 private String allergies;
-private String pathology;
+private ArrayList<Disease> diseases;
 private String antecedents;
 private Boolean validEntourage;
 private Boolean placeAccesible;
@@ -29,7 +30,7 @@ private String id;
 
 public Patient(){}
  
-public Patient(String id, String name, String firstName, Sexe sexe, Date birth, String placeBirth, int socialSecurityNumber, String ipp, String adress, int phoneNumber, MaritalStatus maritalStatus, String email, Boolean isInternet, float weight, float size, Boolean isValide, String allergies, String pathology, String antecedents, Boolean validEntourage, Boolean placeAccesible, String notes) {
+public Patient(String id, String name, String firstName, Sexe sexe, Date birth, String placeBirth, int socialSecurityNumber, String ipp, String adress, int phoneNumber, MaritalStatus maritalStatus, String email, Boolean isInternet, float weight, float size, Boolean isValide, String allergies, ArrayList<Disease> diseases, String antecedents, Boolean validEntourage, Boolean placeAccesible, String notes) {
          this.name = name;
         this.firstName = firstName;
          this.sexe = sexe;
@@ -45,7 +46,7 @@ public Patient(String id, String name, String firstName, Sexe sexe, Date birth, 
          this.size = size;
          this.isValide = isValide;
          this.allergies = allergies;
-         this.pathology = pathology;
+         this.diseases = diseases;
          this.antecedents = antecedents;
          this.validEntourage = validEntourage;
          this.placeAccesible = placeAccesible;
@@ -188,14 +189,14 @@ public Patient(String id, String name, String firstName, Sexe sexe, Date birth, 
      public void setAllergies(String allergies) {
          this.allergies = allergies;
      }
- 
-     public String getPathology() {
-         return pathology;
-     }
- 
-     public void setPathology(String pathology) {
-         this.pathology = pathology;
-     }
+
+    public ArrayList<Disease> getDiseases() {
+        return diseases;
+    }
+
+    public void setDiseases(ArrayList<Disease> diseases) {
+        this.diseases = diseases;
+    }
  
      public String getAntecedents() {
          return antecedents;
@@ -231,7 +232,7 @@ public Patient(String id, String name, String firstName, Sexe sexe, Date birth, 
 
     @Override
     public String toString() {
-        return "Patient{" + "name=" + name + ", firstName=" + firstName + ", sexe=" + sexe + ", birth=" + birth + ", placeBirth=" + placeBirth + ", socialSecurityNumber=" + socialSecurityNumber + ", ipp=" + ipp + ", adress=" + adress + ", phoneNumber=" + phoneNumber + ", email=" + email + ", maritalStatus=" + maritalStatus + ", isInternet=" + isInternet + ", weight=" + weight + ", size=" + size + ", isValide=" + isValide + ", allergies=" + allergies + ", pathology=" + pathology + ", antecedents=" + antecedents + ", validEntourage=" + validEntourage + ", placeAccesible=" + placeAccesible + ", notes=" + notes + ", id=" + id + '}';
+        return "Patient{" + "name=" + name + ", firstName=" + firstName + ", sexe=" + sexe + ", birth=" + birth + ", placeBirth=" + placeBirth + ", socialSecurityNumber=" + socialSecurityNumber + ", ipp=" + ipp + ", adress=" + adress + ", phoneNumber=" + phoneNumber + ", email=" + email + ", maritalStatus=" + maritalStatus + ", isInternet=" + isInternet + ", weight=" + weight + ", size=" + size + ", isValide=" + isValide + ", allergies=" + allergies + ", diseases=" + diseases + ", antecedents=" + antecedents + ", validEntourage=" + validEntourage + ", placeAccesible=" + placeAccesible + ", notes=" + notes + ", id=" + id + '}';
     }
      
  }
