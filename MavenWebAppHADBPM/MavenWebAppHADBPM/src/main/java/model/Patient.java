@@ -1,7 +1,9 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Patient {
     
@@ -85,8 +87,9 @@ public Patient(String id, String name, String firstName, Sexe sexe, Date birth, 
          this.sexe = sexe;
      }
  
-     public Date getBirth() {
-         return birth;
+     public String getBirth() {
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+         return dateFormat.format(birth);
      }
  
      public void setBirth(Date birth) {

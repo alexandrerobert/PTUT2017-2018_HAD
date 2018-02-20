@@ -68,12 +68,12 @@ public class InfoPatient extends HttpServlet {
         json += "{\"weight\": \"" + patient.getWeight() + "\"},\n";
         json += "{\"size\": \"" + patient.getSize() + "\"},\n";
         json += "{\"isValide\": \"" + patient.getIsValide() + "\"},\n";
-        json += "{\"allergies\": \"" + patient.getAllergies() + "\"},\n";
-        json += "{\"antecedents\": \"" + patient.getAntecedents() + "\"},\n";
-        json += "{\"validEntourage\": \"" + patient.getValidEntourage() + "\"},\n";
-        json += "{\"placeAccesible\": \"" + patient.getPlaceAccesible() + "\"},\n";
-        json += "{\"notes\": \"" + patient.getNotes() + "\"},\n";
-        json += "{\"diseases\": \"" + patient.getDiseases() + "\"}\n";
+        json += "{\"hasAllergies\": \"" + patient.getAllergies() + "\"},\n";
+        json += "{\"hasPrevious\": \"" + patient.getAntecedents() + "\"},\n";
+        json += "{\"hasValidEntourage\": \"" + patient.getValidEntourage() + "\"},\n";
+        json += "{\"hasAccessiblePlace\": \"" + patient.getPlaceAccesible() + "\"},\n";
+        json += "{\"hasNotes\": \"" + patient.getNotes() + "\"},\n";
+        json += "{\"hasDiseases\": \"" + patient.getDiseases() + "\"}\n";
         json += "]}";
         System.out.println(json);
         

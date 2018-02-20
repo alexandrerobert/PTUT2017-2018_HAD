@@ -74,9 +74,9 @@
           <div class="col s4">
             <div class="card">
               <div class="card-content">
-              <span><i class="material-icons prefix">assignment</i><b> Allergies : </b><div id="allergies"></div> </span><br>
-              <span><i class="material-icons prefix">assignment</i><b> Disease : </b><div id="disease"></div> </span><br>
-              <span><i class="material-icons prefix">assignment</i><b> Previous : </b> <div id="previous"></div> </span>
+              <span><i class="material-icons prefix">assignment</i><b> Allergies : </b><div id="hasAllergies"></div> </span><br>
+              <span><i class="material-icons prefix">assignment</i><b> Disease : </b><div id="hasDisease"></div> </span><br>
+              <span><i class="material-icons prefix">assignment</i><b> Previous : </b> <div id="hasPrevious"></div> </span>
             </div>
           </div>
           </div>
@@ -84,8 +84,8 @@
           <div class="col s4">
             <div class="card">
               <div class="card-content">
-              <span><i class="material-icons prefix">linear_scale</i><b> Valid entourage : </b> yes </span><br>
-              <span><i class="material-icons prefix">accessible</i><b> Accessible place : </b> yes </span>
+              <span><i class="material-icons prefix">linear_scale</i><b> Valid entourage : </b> <div id="hasValidEntourage"></div> </span><br>
+              <span><i class="material-icons prefix">accessible</i><b> Accessible place : </b> <div id="hasAccessiblePlace"></div> </span>
             </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
 
 
         <diV id="patient_notes" class="col s12">
-          <span>Pauline est une personne brillante !! </span>
+          <span><div id="hasNotes"></div> </span>
         </div>
       </div>
 
