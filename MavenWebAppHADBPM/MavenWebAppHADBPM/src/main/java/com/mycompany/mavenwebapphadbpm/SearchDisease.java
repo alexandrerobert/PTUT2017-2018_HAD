@@ -5,16 +5,20 @@
  */
 package com.mycompany.mavenwebapphadbpm;
 
+import Model.Intervention;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 public class SearchDisease extends HttpServlet {
@@ -26,35 +30,63 @@ public class SearchDisease extends HttpServlet {
         // JSON File Creation     
         int cpt = 1;
         //String diseases = "{";
-        String json = "{\n" +
-                "    \"diseases\": [\n";
+        String json = "{";
+                
+                
         
         // Intialisation
         File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
         //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         Ontology onto = new Ontology(file);
-        OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
-        
+
+        ArrayList<String> diseases = new ArrayList<>();
+        diseases.add("VesicularPeritonitis");
+
         // Pattern of the patient name
         //String nom = request.getParameter("nom");
-        
-        onto.getInterventions(reasoner,"VesicularPeritonitis");
-        
-        /**
-         * A list of all the patients
-         */
-        HashMap<String, String> actionData = onto.getIndividualProperties(reasoner, "VesicularPeritonitis");
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try {
+            PrintWriter out = response.getWriter();
+            for (String d:diseases) {
+                json += "\n\t\"disease\": [" + 
+                "\n\t\t{\"name\" : \"" + d + "\"," +
+                "\n\t\t\t\"interventions\": [\n";
+                // Retrieve all the informations about a disease
+                ArrayList<Intervention> interventions = onto.listeActions(d);
+                for (Intervention i:interventions) {
+                    if (cpt == 1) {
+                        //json += "\t\t\"" + i.getName() + "\" : {\n";
+                        json += "\t\t\t{\"name\" : \"" + i.getName() + "\",\n";
+                    } else {
+                        //json += "\n\t\t\"" + i.getName() + "\" : {\n";
+                        json += "\n\t\t\t{\"name\" : \"" + i.getName() + "\",\n";
+                    }
+                    json += "\t\t\t\t\"typeActor\" : \"" + i.getTypeActor() + "\",\n";
+                    json += "\t\t\t\t\"duration\" : \"" + i.getDuration()+ "\",\n";
+                    json += "\t\t\t\t\"unityDuration\" : \"" + i.getUnityDuration()+ "\",\n";
+                    json += "\t\t\t\t\"frequency\" : \"" + i.getFrequency() + "\",\n";
+                    json += "\t\t\t\t\"unityFrequence\" : \"" + i.getUnityFrequency()+ "\",\n";
+                    json += "\t\t\t\t\"timeofDay\" : \"" + i.getTimeDay()+ "\",\n";
+                    json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure()+ "\",\n";
+                    json += "\t\t\t\t\"moment\" : \"" + i.getMoment()+ "\"\n\t\t},";
+                    cpt++;
+                }
+                // Delete the last coma for the actions
+                json = json.substring(0, json.length()-1);
+                json += "]},";
 
-         //   out.println(json);
-            for (Map.Entry<String, String> values:actionData.entrySet()) {
-                out.println("Clé : " + values.getKey() + " valeur :" + values.getValue());
-                System.out.println("Clé : " + values.getKey() + " valeur :" + values.getValue());
             }
-//            
+            // Delete the last coma for the diseases
+            json = json.substring(0, json.length()-1);
+            
+            json += "\n\t]\n}";
+            out.println(json);
+        } catch (OWLOntologyCreationException ex) {
+            Logger.getLogger(SearchDisease.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+        
+      
         
     }
 

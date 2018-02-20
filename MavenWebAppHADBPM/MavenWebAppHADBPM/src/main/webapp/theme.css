@@ -1,0 +1,13 @@
+/*
+ *  Theme modification for the application
+ *  Created on : 9 févr. 2018, 13:53:35
+ *  Author     : lexr
+ */
+
+.progress {
+    background-color: #ffe0b2;
+}
+
+li.active {
+    background-color: #ff9800;
+}

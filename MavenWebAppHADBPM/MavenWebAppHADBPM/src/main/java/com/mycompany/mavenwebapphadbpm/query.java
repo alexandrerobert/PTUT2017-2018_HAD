@@ -290,13 +290,7 @@ public class query {
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
+   
         public ArrayList<String> ask(String classExpression) {
             ArrayList<String> rs = new ArrayList<>();
             if (classExpression.length() == 0) {
@@ -320,15 +314,6 @@ public class query {
             }
             return rs;
         }
-        
-        
-        
-        
-        
-        
-
-
-        
-        
+  
     }
 }
