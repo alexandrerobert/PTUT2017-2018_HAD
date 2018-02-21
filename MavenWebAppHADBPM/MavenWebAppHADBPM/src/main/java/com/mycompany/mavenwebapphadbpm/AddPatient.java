@@ -43,10 +43,7 @@ public class AddPatient extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String firstName = request.getParameter("firstName");
         String sex = request.getParameter("sexe");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = sdf.parse(request.getParameter("dob"));
-        java.sql.Date dob = new java.sql.Date(date1.getTime());
-        String dobS = String.valueOf(dob);            // convert dateOfBirth in String 
+        String dobS = request.getParameter("dob");
         String pob = request.getParameter("pob");
         String socialSecurityNumber = request.getParameter("socialSecurityNumber");     //better    // int socialSecurityNumber = Integer.parseInt(request.getParameter("socialSecurityNumber"));
         String address = request.getParameter("address");
@@ -62,39 +59,39 @@ public class AddPatient extends HttpServlet {
         String entourage = request.getParameter("entourage");                           //better    // boolean entourage = Boolean.parseBoolean(request.getParameter("entourage"));
         String place = request.getParameter("place");                                   //better    //boolean entourage = Boolean.parseBoolean(request.getParameter("entourage"));
         String note = request.getParameter("note");
-
+        
         //redirection if add valid or not 
         String vu_connValide = "/addPatient.jsp";
         String vu_connInvalide = "/searhPatient.jsp"; // to verify if add is invalid to modify after
 
         // Intialisation
-        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
         //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
-        File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
+        //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
        
         // Insert patient in ontology
-        Info LastName = new Info("hasLastName", lastName, "String"); // hasName
+        Info LastName = new Info("hasName", lastName, "String"); // hasName
         Info FirstName = new Info("hasFirstName", firstName, "String");// hasFirstName
         Info Sex = new Info("hasSex", sex, "String");// hasSex
-        Info Dob = new Info("hasSex", dobS, "String");// hasDateOfBirth
+        Info Dob = new Info("hasDateOfBirth", dobS, "Date");// hasDateOfBirth
         Info Pob = new Info("hasPlaceOfBirth", pob, "String"); // hasPlaceOfBirth
 	Info SocialSecurityNumber = new Info("hasSocialSecurityNumber", socialSecurityNumber, "String"); // hasSocialSecurityNumber
         Info Address = new Info("hasAddress", address, "String");// hasAddress
 	Info PhoneNumber = new Info("hasPhoneNumber", phoneNumber, "String");// hasPhoneNumber
         Info Email = new Info("hasEmail", email, "String"); // hasEmail
         Info Marital = new Info("hasMaritalStatus",marital,"String");// hasMaritalStatus
-        Info Internet = new Info("hasInternetAccess", internet, "String");
+        Info Internet = new Info("hasInternetAccess", internet, "boolean");
         Info Size = new Info("hasSize", size, "String");         // hasSize
         Info Weight = new Info("hasWeight", weight, "String"); // hasWeight
         Info Allergies = new Info("hasAllergies", allergies, "String"); //hasAllergies
-        Info Disease = new Info("Disease", disease, "String");// hasDisease
-	Info Previous = new Info("Disease", previous, "String");// hasPrevious
-        Info Entourage = new Info("Disease", entourage, "String");// hasValidEntourage
-        Info Place = new Info("Disease", place, "String");// hasAccessiblePlace
-        Info Note = new Info("Disease", note, "String");// hasNotes
-        Info Note2 = new Info("Disease", note, "String");// hasNotes        //test à enlever
+        Info Disease = new Info("hasDisease", disease, "String");// hasDisease
+	Info Previous = new Info("hasPrevious", previous, "String");// hasPrevious
+        Info Entourage = new Info("hasValidEntourage", entourage, "boolean");// hasValidEntourage
+        Info Place = new Info("hasAccessiblePlace", place, "boolean");// hasAccessiblePlace
+        Info Note = new Info("hasNotes", note, "String");// hasNotes
+        //Info Note2 = new Info("Disease", note, "String");// hasNotes        //test à enlever
 
         
         //Create ArrayList to insert in the file ontology
@@ -120,7 +117,7 @@ public class AddPatient extends HttpServlet {
         infos.add(Note);
 		
 	// Add the patient to the ontology
-        onto.addPatientIndividual(infos, lastName);
+        onto.addPatientIndividual(infos, "ROBERTDENIRO");
        
     }
 

@@ -19,6 +19,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxEditorParser;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -53,6 +54,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.ShortFormProvider;
+import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 /**
  * This class will represent the DAO of the app HADBPM
@@ -231,9 +233,9 @@ public class Ontology {
                                 break;
                             case "hasSex":
                                 if (ind.getLiteral().equals("Male")) {
-                                    pat.setSexe(Sexe.man);
+                                    pat.setSexe(Sexe.Male);
                                 } else {
-                                    pat.setSexe(Sexe.woman);
+                                    pat.setSexe(Sexe.Female);
                                 }
                                 break;
                             case "hasDateOfBirth":
@@ -305,6 +307,111 @@ public class Ontology {
 
             }
         }));
+
+        onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
+            NodeSet<OWLNamedIndividual> individualValues = reasoner.getObjectPropertyValues(i, p);
+            Set<OWLNamedIndividual> values = asUnorderedSet(individualValues.entities());
+            String head = "The property values for " + p + " for individual " + i + " are: \n";
+            System.out.println(head);
+            for (OWLNamedIndividual ind : values) {
+                String rs = "\t" + ind + "\n";
+                System.out.println(rs);
+            }
+
+        }));
+//        
+//        onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
+//            // Put each individual in a set
+//            Stream<OWLNamedIndividual> individualValues = reasoner.objectPropertyValues(i, p);
+//            // Read the value corresponding to the DataProperty and put it in a set
+//            Set<OWLLiteral> values = asUnorderedSet(individualValues.parallelStream());
+//            // Display the property for the individual
+//            if (i.getIRI().toString().equals(owlIRI + "#" + individual)) {
+//                for (OWLLiteral ind : values) {
+//                    try {
+//                        switch (p.getIRI().getRemainder().get()) {
+//                            case "hasLastName":
+//                                pat.setName(ind.getLiteral());
+//                                break;
+//                            case "hasFirstName":
+//                                pat.setFirstName(ind.getLiteral());
+//                                break;
+//                            case "hasSex":
+//                                if (ind.getLiteral().equals("Male")) {
+//                                    pat.setSexe(Sexe.Male);
+//                                } else {
+//                                    pat.setSexe(Sexe.Female);
+//                                }
+//                                break;
+//                            case "hasDateOfBirth":
+//                                String strDate = ind.getLiteral();
+//                                DateFormat format = new SimpleDateFormat("F/L/yyyy", Locale.FRANCE);
+//                                Date date = format.parse(strDate);
+//                                System.out.println(date);
+//                                pat.setBirth(date);
+//                                break;
+//                            case "hasPlaceOfBirth":
+//                                pat.setPlaceBirth(ind.getLiteral());
+//                                break;
+//                            case "hasSocialSecurityNumber":
+//                                pat.setSocialSecurityNumber(Integer.parseInt(ind.getLiteral()));
+//                                break;
+//                            case "hasAddress":
+//                                pat.setAdress(ind.getLiteral());
+//                                break;
+//                            case "hasPhoneNumber":
+//                                pat.setPhoneNumber(Integer.parseInt(ind.getLiteral()));
+//                                break;
+//                            case "hasEmail":
+//                                pat.setEmail(ind.getLiteral());
+//                                break;
+//                            case "hasMaritalStatus":
+//                                //pat.setMaritalStatus(ind.getLiteral());
+//                                break;
+//                            case "hasInternetAccess":
+//                                //pat.setIsInternet(ind.getLiteral());
+//                                break;
+//                            case "hasSize":
+//                                pat.setSize(Float.parseFloat(ind.getLiteral()));
+//                                break;
+//                            case "hasWeight":
+//                                pat.setWeight(Float.parseFloat(ind.getLiteral()));
+//                                break;
+//                            case "hasAllergies":
+//                                pat.setAllergies(ind.getLiteral());
+//                                break;
+//                            case "hasDisease":
+//                                //pat.set
+//                                break;
+//                            case "hasPrevious":
+//
+//                                break;
+//                            case "hasValidEntourage":
+//                                if (ind.getLiteral().equals("true")) {
+//                                    pat.setValidEntourage(Boolean.TRUE);
+//                                } else {
+//                                    pat.setValidEntourage(Boolean.FALSE);
+//                                }
+//                                break;
+//                            case "hasAccessiblePlace":
+//                                if (ind.getLiteral().equals("true")) {
+//                                    pat.setPlaceAccesible(Boolean.TRUE);
+//                                } else {
+//                                    pat.setPlaceAccesible(Boolean.FALSE);
+//                                }
+//                                break;
+//                            case "hasNotes":
+//                                pat.setNotes(ind.getLiteral());
+//                                break;
+//
+//                        }
+//                    } catch (ParseException ex) {
+//                        Logger.getLogger(Ontology.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//
+//            }
+//        }));
         return pat;
     }
 
@@ -387,23 +494,17 @@ public class Ontology {
 
         // Save the ontology
         try {
-            // Create a blank file
-            //File f = new File("//home//lexr//Documents//testowl.xml"); //Alexandre
-            File f = new File("HCO.owl");
-
-            // Link the blank file to an IRI
-            IRI documentIRI = IRI.create(f);
-            // Save the new ontology
-            manager.saveOntology(onto, new OWLXMLDocumentFormat(), documentIRI);
+            this.getOntology().saveOntology();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+}
 
     }
 
     /**
      * Add all the dataProperties in a list of axioms Method used in addPatient
+     * Used by the method addPatientIndividual
      *
      * @param data all the dataProperties with their values and type
      * @param patient the patient on which the dataProperties are on
@@ -418,6 +519,7 @@ public class Ontology {
             OWLDataProperty hasProp = df.getOWLDataProperty(IRI.create(owlIRI + "#" + dp.getRelation()));
             OWLDataPropertyAssertionAxiom axiom = null;
             // Link the patient to the has Age and the value
+            System.out.println("Relation : " + dp.getRelation() + " valeur : " + dp.getValue());
             switch (dp.getType()) {
                 case "String":
                     axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, dp.getValue());
@@ -428,8 +530,24 @@ public class Ontology {
                 case "float":
                     axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, Float.parseFloat(dp.getValue()));
                     break;
+                case "boolean":
+                    if (dp.getValue() == null) {
+                        axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, false);
+                    } else {
+                        axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, true);
+                    }
+                    break;
                 case "Date":
-                    axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, dp.getValue());
+                    try {
+                        String strDate = dp.getValue();
+                        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                        Date date = format.parse(strDate);
+                        System.out.println(date);
+                        axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, date.toString());
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Ontology.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                     break;
             }
             // Create the axiom to add in the ontology

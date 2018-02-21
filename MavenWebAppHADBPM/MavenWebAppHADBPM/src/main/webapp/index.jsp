@@ -1,6 +1,6 @@
 <%@include file="tete.jsp" %>
 
-<div class="row">
+<div class="row section no-pad-bot">
   <div class="container">
 
   <div class="slider">

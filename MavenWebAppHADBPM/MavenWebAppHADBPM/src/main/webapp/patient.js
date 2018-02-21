@@ -3,10 +3,16 @@ $(document).ready(function () {
   $("#info2").hide();
   $("#patient_notes").hide();
 
+var url = window.document.URL;
+var index = (url.indexOf('=')) + 1;
+var pat = url.substring(index);
+console.log(pat);
+
   var patientsName = "{";
   // Retrieve all the patients in the owl
   var val = $.ajax({
     url: 'InfoPatient',
+    data: 'id='+pat,
     method: 'GET',
     success: function (data) {
       return val;

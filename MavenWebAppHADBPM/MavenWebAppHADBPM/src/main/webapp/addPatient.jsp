@@ -11,7 +11,7 @@
 
   <div class="row">
     <div class="container">
-      <form class="col s12">
+      <form class="col s12" method="POST" action="AddPatient">
         <div class="row">
           <ul class="collapsible" data-collapsible="accordion">
 
@@ -31,10 +31,10 @@
                   </div>
 
                   <div class="input-field col s4">
-                    <select name=sexe" id="hasSex">
+                    <select name="sexe" id="hasSex">
                       <option value="" disabled selected>Sexe</option>
-                      <option value="1" >Male</option>
-                      <option value="2" >Female</option>
+                      <option value="Male" >Male</option>
+                      <option value="Female" >Female</option>
                     </select>
                   </div>
 
@@ -81,12 +81,12 @@
                     <i class="material-icons prefix">add_circle</i>
                     <select name="marital" id="hasMaritalStatus">
                       <option value="" disabled selected>Marital status</option>
-                      <option value="1">Single</option>
-                      <option value="2">Married</option>
-                      <option value="3">Relation ship</option>
-                      <option value="4">Divorced</option>
-                      <option value="5">Legally separated</option>
-                      <option value="6">Widowed</option>
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Realationship">Relation ship</option>
+                      <option value="Divorced">Divorced</option>
+                      <option value="Legally Separated">Legally separated</option>
+                      <option value="Widowed">Widowed</option>
                     </select>
                   </div>
 
@@ -114,7 +114,7 @@
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">accessibility</i>
-                    <input name=size" id="hasSize" type="text" class="validate">
+                    <input name="size" id="hasSize" type="text" class="validate">
                     <label>Size</label>
                   </div>
 
@@ -188,11 +188,12 @@
             </li>
           </ul>
         </div>
-      </form>
-      <div class="input-field col s12">
+          <div class="input-field col s12">
         <button class="btn waves-effect waves-light" type="submit" name="action">Validate
           <i class="material-icons right">send</i>
         </button>
+      </form>
+      
       </div>
     </div>
   </div>
@@ -204,6 +205,7 @@
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 120, // Creates a dropdown of 15 years to control year,
     closeOnSelect: false, // Close upon selecting a date,
+    format: 'dd/mm/yyyy'
   });
 
   $(document).ready(function(){
