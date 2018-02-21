@@ -11,9 +11,8 @@ public class Intervention {
     private UnityTime unityDuration;
     private String frequency;
     private UnityTime unityFrequency;
-    private TimeDay timeDay;
+    private ArrayList<TimeDay> timeDay;
     private HomeCareStructure homeCareStructure;
-    private ArrayList<String> moment; // Choix discutable
 
     public String getName() {
         return name;
@@ -63,13 +62,7 @@ public class Intervention {
         this.unityFrequency = unityFrequency;
     }
 
-    public TimeDay getTimeDay() {
-        return timeDay;
-    }
 
-    public void setTimeDay(TimeDay timeDay) {
-        this.timeDay = timeDay;
-    }
 
     public HomeCareStructure getHomeCareStructure() {
         return homeCareStructure;
@@ -79,22 +72,12 @@ public class Intervention {
         this.homeCareStructure = homeCareStructure;
     }
 
-    public void setMoment(ArrayList<String> moment) {
-        this.moment = moment;
-    }
-    
-    public ArrayList<String> getMoment() {
-        if (moment == null ) {
-            this.moment = new ArrayList<>();
-        }
-        return this.moment;
-    }
-    
+
     public Intervention(String name) {
         this.name = name;
     }
     
-    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure, ArrayList<String> moment) {
+    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, ArrayList<TimeDay> timeDay, HomeCareStructure homeCareStructure, ArrayList<String> moment) {
         this.name = name;
         this.typeActor = typeActor;
         this.duration = duration;
@@ -103,12 +86,19 @@ public class Intervention {
         this.unityFrequency = unityFrequency;
         this.timeDay = timeDay;
         this.homeCareStructure = homeCareStructure;
-        this.moment = moment;
+    }
+
+    public ArrayList<TimeDay> getTimeDay() {
+        return timeDay;
+    }
+
+    public void setTimeDay(ArrayList<TimeDay> timeDay) {
+        this.timeDay = timeDay;
     }
 
     @Override
     public String toString() {
-        return "Intervention{" + "name=" + name + ", typeActor=" + typeActor + ", duration=" + duration + ", unityDuration=" + unityDuration + ", frequency=" + frequency + ", unityFrequency=" + unityFrequency + ", timeDay=" + timeDay + ", homeCareStructure=" + homeCareStructure + ", moment=" + moment + '}';
+        return "Intervention{" + "name=" + name + ", typeActor=" + typeActor + ", duration=" + duration + ", unityDuration=" + unityDuration + ", frequency=" + frequency + ", unityFrequency=" + unityFrequency + ", timeDay=" + timeDay + ", homeCareStructure=" + homeCareStructure + '}';
     }
     
     

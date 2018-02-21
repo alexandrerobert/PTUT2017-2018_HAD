@@ -20,12 +20,13 @@
               <div id="info1" class="col s8">
                 <h5><div id="names"></div></h5> <br><br>
                 <b> Sexe : </b> <div id="sexe"></div> <br><br>
-                <b> Birth : </b><div id="birth"></div></div><br><br>
+                <b> Birth : </b><div id="birth"></div><br><br>
                 <b> Social Security Number : </b> <div id="socialSecurityNumber"></div> <br><br>
                 <div class="right-align">
                   <a href="#" onclick="$('#info1').hide();$('#info2').show();"><i class="material-icons prefix">arrow_forward</i> </a>
                 </div>
               </div>
+
 
               <div id="info2" class="col s8">
                 <b> Adress : </b> <div id="adress"></div> <br><br>
@@ -63,8 +64,8 @@
           <div class="col s4">
             <div class="card">
               <div class="card-content">
-                <span><i class="material-icons prefix">accessibility</i><b> Size : </b> 164cm</span><br>
-                <span><i class="material-icons prefix">linear_scale</i><b> Weight : </b> 10kg</span>
+                <span><i class="material-icons prefix">accessibility</i><b> Size : </b><div id="size"></div></span><br>
+                <span><i class="material-icons prefix">linear_scale</i><b> Weight : </b><div id="weight"></div></span>
               </div>
             </div>
           </div>
@@ -73,9 +74,9 @@
           <div class="col s4">
             <div class="card">
               <div class="card-content">
-              <span><i class="material-icons prefix">assignment</i><b> Allergies : </b> 8 rue borrel - 81100 Castres </span><br>
-              <span><i class="material-icons prefix">assignment</i><b> Disease : </b> 06.22.67.51.92 </span><br>
-              <span><i class="material-icons prefix">assignment</i><b> Previous : </b> Asthm </span>
+              <span><i class="material-icons prefix">assignment</i><b> Allergies : </b><div id="hasAllergies"></div> </span><br>
+              <span><i class="material-icons prefix">assignment</i><b> Disease : </b><div id="hasDisease"></div> </span><br>
+              <span><i class="material-icons prefix">assignment</i><b> Previous : </b> <div id="hasPrevious"></div> </span>
             </div>
           </div>
           </div>
@@ -83,8 +84,8 @@
           <div class="col s4">
             <div class="card">
               <div class="card-content">
-              <span><i class="material-icons prefix">linear_scale</i><b> Valid entourage : </b> yes </span><br>
-              <span><i class="material-icons prefix">accessible</i><b> Accessible place : </b> yes </span>
+              <span><i class="material-icons prefix">linear_scale</i><b> Valid entourage : </b> <div id="hasValidEntourage"></div> </span><br>
+              <span><i class="material-icons prefix">accessible</i><b> Accessible place : </b> <div id="hasAccessiblePlace"></div> </span>
             </div>
             </div>
           </div>
@@ -103,7 +104,7 @@
 
 
         <diV id="patient_notes" class="col s12">
-          <span>Pauline est une personne brillante !! </span>
+          <span><div id="hasNotes"></div> </span>
         </div>
       </div>
 

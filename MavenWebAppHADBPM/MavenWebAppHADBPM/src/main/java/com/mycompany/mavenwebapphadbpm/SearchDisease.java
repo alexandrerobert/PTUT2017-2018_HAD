@@ -35,8 +35,8 @@ public class SearchDisease extends HttpServlet {
                 
         
         // Intialisation
-        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         Ontology onto = new Ontology(file);
 
@@ -67,8 +67,7 @@ public class SearchDisease extends HttpServlet {
                     json += "\t\t\t\t\"frequency\" : \"" + i.getFrequency() + "\",\n";
                     json += "\t\t\t\t\"unityFrequence\" : \"" + i.getUnityFrequency()+ "\",\n";
                     json += "\t\t\t\t\"timeofDay\" : \"" + i.getTimeDay()+ "\",\n";
-                    json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure()+ "\",\n";
-                    json += "\t\t\t\t\"moment\" : \"" + i.getMoment()+ "\"\n\t\t},";
+                    json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure()+ "\",\n\t\t},";
                     cpt++;
                 }
                 // Delete the last coma for the actions

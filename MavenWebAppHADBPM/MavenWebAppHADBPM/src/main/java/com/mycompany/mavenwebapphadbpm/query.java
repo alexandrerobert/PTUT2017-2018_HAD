@@ -119,18 +119,7 @@ public class query {
             if (!f.isEmpty()) {
                 inter.setFrequency(f.get(0));
             }
-                
-            
-            // Set the Number of time it has to be performed
-            
-            // Set the moment of the day that have to be performed
-            String moment = "isTimeOfDayToPerformsAction value " + a;
-            ArrayList<String> listMoment = b.DLQuery(moment);
-            if (!listMoment.isEmpty()) {
-                inter.setMoment(listMoment);
-            }
-            
-            
+                        
             // Add the complete intervention to the list
             actions.add(inter);
         }
