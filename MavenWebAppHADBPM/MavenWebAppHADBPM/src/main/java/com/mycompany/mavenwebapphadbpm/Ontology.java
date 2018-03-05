@@ -227,56 +227,56 @@ public class Ontology {
                     try {
                         switch (p.getIRI().getRemainder().get()) {
                             case "hasName":
-                                pat.setName(ind.getLiteral());
+                                pat.setHasName(ind.getLiteral());
                                 break;
                             case "hasFirstName":
-                                pat.setFirstName(ind.getLiteral());
+                                pat.setHasFirstName(ind.getLiteral());
                                 break;
                             case "hasSex":
                                 if (ind.getLiteral().equals("Male")) {
-                                    pat.setSexe(Sexe.Male);
+                                    pat.setHasSex(Sexe.Male);
                                 } else {
-                                    pat.setSexe(Sexe.Female);
+                                    pat.setHasSex(Sexe.Female);
                                 }
                                 break;
                             case "hasDateOfBirth":
                                 String strDate = ind.getLiteral();
-                                DateFormat format = new SimpleDateFormat("F/L/yyyy", Locale.FRANCE);
+                                DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date date = format.parse(strDate);
                                 System.out.println(date);
-                                pat.setBirth(date);
+                                pat.setHasDateOfBirth(date);
                                 break;
                             case "hasPlaceOfBirth":
-                                pat.setPlaceBirth(ind.getLiteral());
+                                pat.setHasPlaceOfBirth(ind.getLiteral());
                                 break;
-                            case "hasSocialSecurityNumber":
-                                pat.setSocialSecurityNumber(Integer.parseInt(ind.getLiteral()));
+                            case "hasSocialSecurityNumberID":
+                                pat.setHasSocialSecurityNumberID(Integer.parseInt(ind.getLiteral()));
                                 break;
                             case "hasAdress":
-                                pat.setAdress(ind.getLiteral());
+                                pat.setHasAdress(ind.getLiteral());
                                 break;
                             case "hasPhoneNumber":
-                                pat.setPhoneNumber(Integer.parseInt(ind.getLiteral()));
+                                pat.setHasPhoneNumber(Integer.parseInt(ind.getLiteral()));
                                 break;
                             case "hasEmail":
-                                pat.setEmail(ind.getLiteral());
+                                pat.setHasEmail(ind.getLiteral());
                                 break;
                             case "hasMaritalStatus":
                                 switch (ind.getLiteral()) {
                                     case "Divorced":
-                                        pat.setMaritalStatus(MaritalStatus.divorced);
+                                        pat.setHasMaritalStatus(MaritalStatus.Divorced);
                                         break;
                                     case "Legelly separated":
-                                        pat.setMaritalStatus(MaritalStatus.legallySeparated);
+                                        pat.setHasMaritalStatus(MaritalStatus.LegallySeparated);
                                         break;
                                     case "Married":
-                                        pat.setMaritalStatus(MaritalStatus.married);
+                                        pat.setHasMaritalStatus(MaritalStatus.Married);
                                         break;
                                     case "Single":
-                                        pat.setMaritalStatus(MaritalStatus.single);
+                                        pat.setHasMaritalStatus(MaritalStatus.Single);
                                         break;
                                     case "Widowed":
-                                        pat.setMaritalStatus(MaritalStatus.widowed);
+                                        pat.setHasMaritalStatus(MaritalStatus.Widowed);
                                         break;                                   
                                 }
                                 break;
@@ -291,38 +291,58 @@ public class Ontology {
                                 }
                                 break;
                             case "hasSize":
-                                pat.setSize(Float.parseFloat(ind.getLiteral()));
+                                pat.setHasSize(Float.parseFloat(ind.getLiteral()));
                                 break;
                             case "hasWeight":
-                                pat.setWeight(Float.parseFloat(ind.getLiteral()));
+                                pat.setHasWeight(Float.parseFloat(ind.getLiteral()));
                                 break;
                             case "hasAllergies":
-                                pat.setAllergies(ind.getLiteral());
+                                pat.setHasAllergies(ind.getLiteral());
                                 break;
                             case "hasDisease":
                                 //pat.set
                                 break;
                             case "hasPrevious":
-
+                                pat.setHasPrevious(ind.getLiteral());
                                 break;
-                            case "hasValidEntourage":
+                            case "isValideFamily":
                                 if (ind.getLiteral().equals("true")) {
-                                    pat.setValidEntourage(Boolean.TRUE);
+                                    pat.setIsValideFamily(Boolean.TRUE);
                                 } else {
-                                    pat.setValidEntourage(Boolean.FALSE);
+                                    pat.setIsValideFamily(Boolean.FALSE);
                                 }
                                 break;
-                            case "hasAccessiblePlace":
+                            case "isValide":
                                 if (ind.getLiteral().equals("true")) {
-                                    pat.setPlaceAccesible(Boolean.TRUE);
+                                    pat.setIsValide(Boolean.TRUE);
                                 } else {
-                                    pat.setPlaceAccesible(Boolean.FALSE);
+                                    pat.setIsValide(Boolean.FALSE);
+                                }
+                                break;
+                            case "isAccessiblePlace":
+                                if (ind.getLiteral().equals("true")) {
+                                    pat.setIsAccessiblePlace(Boolean.TRUE);
+                                } else {
+                                    pat.setIsAccessiblePlace(Boolean.FALSE);
                                 }
                                 break;
                             case "hasNotes":
-                                pat.setNotes(ind.getLiteral());
+                                pat.setHasNotes(ind.getLiteral());
                                 break;
-
+                            case "isSport":
+                                if (ind.getLiteral().equals("true")) {
+                                    pat.setIsSport(Boolean.TRUE);
+                                } else {
+                                    pat.setIsSport(Boolean.FALSE);
+                                }
+                                break;
+                            case "isSmoking":
+                                if (ind.getLiteral().equals("true")) {
+                                    pat.setIsSmoking(Boolean.TRUE);
+                                } else {
+                                    pat.setIsSmoking(Boolean.FALSE);
+                                }
+                                break;
                         }
                     } catch (ParseException ex) {
                         Logger.getLogger(Ontology.class.getName()).log(Level.SEVERE, null, ex);
@@ -458,10 +478,10 @@ public class Ontology {
 
                 for (OWLLiteral v : values) {
                     if (p.getIRI().getRemainder().get().equals("hasFirstName")) {
-                        pat.setFirstName(v.getLiteral());
+                        pat.setHasFirstName(v.getLiteral());
                     }
                     if (p.getIRI().getRemainder().get().equals("hasName")) {
-                        pat.setName(v.getLiteral());
+                        pat.setHasName(v.getLiteral());
                     }
                 }
 

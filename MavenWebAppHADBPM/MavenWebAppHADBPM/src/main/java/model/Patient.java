@@ -13,7 +13,6 @@ public class Patient {
     private Date hasDateOfBirth;
     private String hasPlaceOfBirth;
     private int hasSocialSecurityNumberID;
-    private String hasBMI;
     private String hasAdress;
     private int hasPhoneNumber;
     private String hasEmail;
@@ -40,7 +39,6 @@ public class Patient {
         this.hasDateOfBirth = hasDateOfBirth;
         this.hasPlaceOfBirth = hasPlaceOfBirth;
         this.hasSocialSecurityNumberID = hasSocialSecurityNumberID;
-        this.hasBMI = hasBMI;
         this.hasAdress = hasAdress;
         this.hasPhoneNumber = hasPhoneNumber;
         this.hasEmail = hasEmail;
@@ -58,9 +56,13 @@ public class Patient {
         this.isSmoking = isSmoking;
         this.isSport = isSport;
     }
+
+    public Patient() {
+    }
     
-    public Date getHasDateOfBirth() {
-        return hasDateOfBirth;
+    public String getHasDateOfBirth() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(hasDateOfBirth);
     }
 
     public void setHasDateOfBirth(Date hasDateOfBirth) {
@@ -129,14 +131,6 @@ public class Patient {
 
     public void setHasSocialSecurityNumberID(int hasSocialSecurityNumberID) {
         this.hasSocialSecurityNumberID = hasSocialSecurityNumberID;
-    }
-
-    public String getHasBMI() {
-        return hasBMI;
-    }
-
-    public void setHasBMI(String hasBMI) {
-        this.hasBMI = hasBMI;
     }
 
     public String getHasAdress() {
@@ -254,7 +248,7 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" + "adress=" + hasAdress + ", allergies=" + hasAllergies + ", BMI=" + hasBMI + ", dateOfBirth=" + hasDateOfBirth + ", email=" + hasEmail + ", firstName=" + hasFirstName + ", maritalStatus=" + hasMaritalStatus + ", hasName=" + hasName + ", hasNotes=" + hasNotes + ", phoneNumber=" + hasPhoneNumber + ", placeOfBirth=" + hasPlaceOfBirth + ", previous=" + hasPrevious + ", sex=" + hasSex + ", size=" + hasSize + ", socialSecurityNumberID=" + hasSocialSecurityNumberID + ", weight=" + hasWeight + ", accessiblePlace=" + isAccessiblePlace + ", internet=" + isInternet + ", valide=" + isValide + ", valideFamily=" + isValideFamily + ", sport=" + isSport + ", smoking=" + isSmoking + '}';
+        return "Patient{" + "adress=" + hasAdress + ", allergies=" + hasAllergies + ", dateOfBirth=" + hasDateOfBirth + ", email=" + hasEmail + ", firstName=" + hasFirstName + ", maritalStatus=" + hasMaritalStatus + ", hasName=" + hasName + ", hasNotes=" + hasNotes + ", phoneNumber=" + hasPhoneNumber + ", placeOfBirth=" + hasPlaceOfBirth + ", previous=" + hasPrevious + ", sex=" + hasSex + ", size=" + hasSize + ", socialSecurityNumberID=" + hasSocialSecurityNumberID + ", weight=" + hasWeight + ", accessiblePlace=" + isAccessiblePlace + ", internet=" + isInternet + ", valide=" + isValide + ", valideFamily=" + isValideFamily + ", sport=" + isSport + ", smoking=" + isSmoking + '}';
     }
 
 }
