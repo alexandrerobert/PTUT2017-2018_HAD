@@ -1,10 +1,9 @@
 package model;
 
 public enum MaritalStatus {
-    divorced,
-    legallySeparated,
-    married,
-    single,
-    widowed,
-    relationship
+    Divorced,
+    LegallySeparated,
+    Married,
+    Single,
+    Widowed
 }
