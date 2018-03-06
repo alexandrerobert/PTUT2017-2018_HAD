@@ -31,9 +31,9 @@
           <nav id="navItems">
             <div class="nav-wrapper grey">
               <ul class="hide-on-med-and-down">
-                <li class="col s4 center"><a href="#" onclick="$('#patient_notes').hide();$('#medical_data').hide();$('#info_patient').show();$(this).parent().addClass('active')">Info patient</a></li>
-                <li class="col s4 center"><a href="#" onclick="$('#patient_notes').hide();$('#info_patient').hide();$('#medical_data').show();$(this).parent().addClass('active')">Medical Data</a></li>
-                <li class="col s4 center"><a href="#" onclick="$('#medical_data').hide();$('#info_patient').hide();$('#patient_notes').show();$(this).parent().addClass('active')">Patient notes</a></li>
+                <li class="col s4 center"><a href="#" onclick="$('#patient_notes').hide();$('#medical_data').hide();$('#info_patient').show();$(this).parent().siblings().removeClass('active');$(this).parent().addClass('active')">Info patient</a></li>
+                <li class="col s4 center"><a href="#" onclick="$('#patient_notes').hide();$('#info_patient').hide();$('#medical_data').show();$(this).parent().siblings().removeClass('active');$(this).parent().addClass('active')">Medical Data</a></li>
+                <li class="col s4 center"><a href="#" onclick="$('#medical_data').hide();$('#info_patient').hide();$('#patient_notes').show();$(this).parent().siblings().removeClass('active');$(this).parent().addClass('active')">Patient notes</a></li>
               </ul>
             </div>
           </nav>
