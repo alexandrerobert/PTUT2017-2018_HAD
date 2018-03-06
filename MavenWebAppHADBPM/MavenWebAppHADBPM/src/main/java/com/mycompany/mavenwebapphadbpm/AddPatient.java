@@ -7,9 +7,12 @@ package com.mycompany.mavenwebapphadbpm;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +41,7 @@ public class AddPatient extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
+        
         
         // recover patient's informations with name in addPatient.jsp
         String lastName = request.getParameter("lastName");
@@ -71,20 +75,21 @@ public class AddPatient extends HttpServlet {
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
        
+        
         // Insert patient in ontology
         Info LastName = new Info("hasName", lastName, "String"); // hasName
         Info FirstName = new Info("hasFirstName", firstName, "String");// hasFirstName
         Info Sex = new Info("hasSex", sex, "String");// hasSex
         Info Dob = new Info("hasDateOfBirth", dobS, "Date");// hasDateOfBirth
         Info Pob = new Info("hasPlaceOfBirth", pob, "String"); // hasPlaceOfBirth
-	Info SocialSecurityNumber = new Info("hasSocialSecurityNumber", socialSecurityNumber, "String"); // hasSocialSecurityNumber
+	Info SocialSecurityNumber = new Info("hasSocialSecurityNumber", socialSecurityNumber, "int"); // hasSocialSecurityNumber
         Info Address = new Info("hasAddress", address, "String");// hasAddress
-	Info PhoneNumber = new Info("hasPhoneNumber", phoneNumber, "String");// hasPhoneNumber
+	Info PhoneNumber = new Info("hasPhoneNumber", phoneNumber, "int");// hasPhoneNumber
         Info Email = new Info("hasEmail", email, "String"); // hasEmail
         Info Marital = new Info("hasMaritalStatus",marital,"String");// hasMaritalStatus
         Info Internet = new Info("hasInternetAccess", internet, "boolean");
-        Info Size = new Info("hasSize", size, "String");         // hasSize
-        Info Weight = new Info("hasWeight", weight, "String"); // hasWeight
+        Info Size = new Info("hasSize", size, "float");         // hasSize
+        Info Weight = new Info("hasWeight", weight, "float"); // hasWeight
         Info Allergies = new Info("hasAllergies", allergies, "String"); //hasAllergies
         Info Disease = new Info("hasDisease", disease, "String");// hasDisease
 	Info Previous = new Info("hasPrevious", previous, "String");// hasPrevious
@@ -96,7 +101,8 @@ public class AddPatient extends HttpServlet {
         
         //Create ArrayList to insert in the file ontology
 	ArrayList<Info> infos = new ArrayList<>();
-	infos.add(LastName);
+	infos.add(Disease);	
+        infos.add(LastName);
 	infos.add(FirstName);
 	infos.add(Sex);
 	infos.add(Dob);
@@ -110,14 +116,16 @@ public class AddPatient extends HttpServlet {
 	infos.add(Size);
 	infos.add(Weight);
 	infos.add(Allergies);
-	infos.add(Disease);	
 	infos.add(Previous);
 	infos.add(Entourage);
 	infos.add(Place);
         infos.add(Note);
 		
-	// Add the patient to the ontology
-        onto.addPatientIndividual(infos, "ROBERTDENIRO");
+	
+
+        // Add the patient to the ontology
+        String id = new SimpleDateFormat("ddMMyyyyhhMMss").format(Calendar.getInstance().getTime());
+        onto.addPatientIndividual(infos, id);
        
     }
 

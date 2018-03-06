@@ -134,7 +134,7 @@
                     <i class="material-icons prefix">add_circle</i>
                     <select name="disease" id="hasDisease" multiple>
                       <option value="" disabled selected>Disease</option>
-                      <option value="1">Anaemia</option>
+                      <option value="VesicularPeritonitis">VesicularPeritonitis</option>
                       <option value="2">Arthritis</option>
                       <option value="3">Diabetes</option>
                     </select>

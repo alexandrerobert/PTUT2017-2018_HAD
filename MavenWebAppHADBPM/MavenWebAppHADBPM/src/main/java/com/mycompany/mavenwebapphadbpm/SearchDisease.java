@@ -35,8 +35,8 @@ public class SearchDisease extends HttpServlet {
                 
         
         // Intialisation
-        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         Ontology onto = new Ontology(file);
 
@@ -48,11 +48,13 @@ public class SearchDisease extends HttpServlet {
         try {
             PrintWriter out = response.getWriter();
             for (String d:diseases) {
+                System.out.println("la maladie est : " + d);
                 json += "\n\t\"disease\": [" + 
                 "\n\t\t{\"name\" : \"" + d + "\"," +
                 "\n\t\t\t\"interventions\": [\n";
                 // Retrieve all the informations about a disease
                 ArrayList<Intervention> interventions = onto.listeActions(d);
+                
                 for (Intervention i:interventions) {
                     if (cpt == 1) {
                         //json += "\t\t\"" + i.getName() + "\" : {\n";
@@ -67,7 +69,7 @@ public class SearchDisease extends HttpServlet {
                     json += "\t\t\t\t\"frequency\" : \"" + i.getFrequency() + "\",\n";
                     json += "\t\t\t\t\"unityFrequence\" : \"" + i.getUnityFrequency()+ "\",\n";
                     json += "\t\t\t\t\"timeofDay\" : \"" + i.getTimeDay()+ "\",\n";
-                    json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure()+ "\",\n\t\t},";
+                    json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure()+ "\"\n\t\t},";
                     cpt++;
                 }
                 // Delete the last coma for the actions

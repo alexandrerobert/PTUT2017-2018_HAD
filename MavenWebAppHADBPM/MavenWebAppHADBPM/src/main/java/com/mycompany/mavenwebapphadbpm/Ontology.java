@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -22,6 +23,7 @@ import java.util.logging.Logger;
 import model.MaritalStatus;
 import java.util.stream.Stream;
 import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxEditorParser;
+import org.eclipse.rdf4j.model.datatypes.XMLDateTime;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
@@ -36,6 +38,7 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDataPropertyAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -55,6 +58,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.ShortFormProvider;
+import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 /**
@@ -510,6 +514,7 @@ public class Ontology {
         // Apply the axiom to the ontology
         manager.applyChange(addAxiomHasDisease);
 
+        // Delete the axiom of the disease
         data.remove(data.get(0));
 
         for (AddAxiom axiom : addDataProperties(data, patient)) {
@@ -522,7 +527,7 @@ public class Ontology {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-}
+        }
 
     }
 
@@ -566,8 +571,14 @@ public class Ontology {
                         String strDate = dp.getValue();
                         DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
                         Date date = format.parse(strDate);
-                        System.out.println(date);
-                        axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, date.toString());
+                        DateFormat format2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                        String date2 = format2.format(date);
+                        
+                        // Créer un literal
+                        OWLDatatype type = man.getOWLDataFactory().getOWLDatatype(OWL2Datatype.XSD_DATE_TIME);
+                        OWLLiteral literal = man.getOWLDataFactory().getOWLLiteral(date2, type);
+                        //System.out.println(literal);
+                        axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient,literal);
                     } catch (ParseException ex) {
                         Logger.getLogger(Ontology.class.getName()).log(Level.SEVERE, null, ex);
                     }
