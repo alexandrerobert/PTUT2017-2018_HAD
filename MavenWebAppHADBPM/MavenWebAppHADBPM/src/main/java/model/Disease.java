@@ -13,16 +13,26 @@ import java.util.ArrayList;
  */
 class Disease {
     
-    String name;
+    String hasDisease;
+    int hasStade;
     ArrayList<Intervention> interventions;
 
-    public String getName() {
-        return name;
+    public String getHasDisease() {
+        return hasDisease;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHasDisease(String hasDisease) {
+        this.hasDisease = hasDisease;
     }
+
+    public int getHasStade() {
+        return hasStade;
+    }
+
+    public void setHasStade(int hasStade) {
+        this.hasStade = hasStade;
+    }
+
 
     public ArrayList<Intervention> getInterventions() {
         return interventions;

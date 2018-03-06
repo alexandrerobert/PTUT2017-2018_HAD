@@ -46,34 +46,34 @@ public class InfoPatient extends HttpServlet {
         // Intialisation
         //File f = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
-        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO1.owl"); // Pauline
+        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); // Pauline
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
         String id = request.getParameter("id");
         Patient patient = onto.getIndividualProperties(reasoner,id);
-        System.out.println(patient.getFirstName());
         
-        json += "{\"name\": \"" + patient.getName() + "\"},\n";
-        json += "{\"firstName\": \"" + patient.getFirstName() + "\"},\n";
-        json += "{\"sexe\": \"" + patient.getSexe() + "\"},\n";
-        json += "{\"birth\": \"" + patient.getBirth() + "\"},\n";
-        json += "{\"placeBirth\": \"" + patient.getPlaceBirth() + "\"},\n";
-        json += "{\"socialSecurityNumber\": \"" + patient.getSocialSecurityNumber() + "\"},\n";
-        json += "{\"ipp\": \"" + patient.getIpp() + "\"},\n";
-        json += "{\"adress\": \"" + patient.getAdress() + "\"},\n";
-        json += "{\"phoneNumber\": \"" + patient.getPhoneNumber() + "\"},\n";
-        json += "{\"email\": \"" + patient.getEmail() + "\"},\n";
-        json += "{\"maritalStatus\": \"" + patient.getMaritalStatus() + "\"},\n";
+        json += "{\"hasName\": \"" + patient.getHasName() + "\"},\n";
+        json += "{\"hasFirstName\": \"" + patient.getHasFirstName() + "\"},\n";
+        json += "{\"hasSex\": \"" + patient.getHasSex() + "\"},\n";
+        json += "{\"hasDateOfBirth\": \"" + patient.getHasDateOfBirth() + "\"},\n";
+        json += "{\"hasPlaceOfBirth\": \"" + patient.getHasPlaceOfBirth() + "\"},\n";
+        json += "{\"hasSocialSecurityNumberID\": \"" + patient.getHasSocialSecurityNumberID() + "\"},\n";
+        json += "{\"hasAdress\": \"" + patient.getHasAdress() + "\"},\n";
+        json += "{\"hasPhoneNumber\": \"" + patient.getHasPhoneNumber() + "\"},\n";
+        json += "{\"hasEmail\": \"" + patient.getHasEmail() + "\"},\n";
+        json += "{\"hasMaritalStatus\": \"" + patient.getHasMaritalStatus() + "\"},\n";
         json += "{\"isInternet\": \"" + patient.getIsInternet() + "\"},\n";
-        json += "{\"weight\": \"" + patient.getWeight() + "\"},\n";
-        json += "{\"size\": \"" + patient.getSize() + "\"},\n";
+        json += "{\"hasWeight\": \"" + patient.getHasWeight() + "\"},\n";
+        json += "{\"hasSize\": \"" + patient.getHasSize() + "\"},\n";
         json += "{\"isValide\": \"" + patient.getIsValide() + "\"},\n";
-        json += "{\"hasAllergies\": \"" + patient.getAllergies() + "\"},\n";
-        json += "{\"hasPrevious\": \"" + patient.getAntecedents() + "\"},\n";
-        json += "{\"hasValidEntourage\": \"" + patient.getValidEntourage() + "\"},\n";
-        json += "{\"hasAccessiblePlace\": \"" + patient.getPlaceAccesible() + "\"},\n";
-        json += "{\"hasNotes\": \"" + patient.getNotes() + "\"},\n";
-        json += "{\"hasDiseases\": \"" + patient.getDiseases() + "\"}\n";
+        json += "{\"hasAllergies\": \"" + patient.getHasAllergies() + "\"},\n";
+        json += "{\"hasPrevious\": \"" + patient.getHasPrevious() + "\"},\n";
+        json += "{\"isValideFamily\": \"" + patient.getIsValideFamily() + "\"},\n";
+        json += "{\"isAccessiblePlace\": \"" + patient.getIsAccessiblePlace() + "\"},\n";
+        json += "{\"hasNotes\": \"" + patient.getHasNotes() + "\"},\n";
+        json += "{\"hasDiseases\": \"" + patient.getHasDiseases() + "\"},\n";
+        json += "{\"isSmoking\": \"" + patient.getIsSmoking() + "\"},\n";
+        json += "{\"isSport\": \"" + patient.getIsSport() + "\"}\n";
         json += "]}";
         System.out.println(json);
         

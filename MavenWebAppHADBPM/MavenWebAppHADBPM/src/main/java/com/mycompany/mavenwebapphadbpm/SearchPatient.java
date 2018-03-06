@@ -42,8 +42,8 @@ public class SearchPatient extends HttpServlet {
         int cpt = 1 ;
 
         // Intialisation
-        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO1.owl"); //Pauline
+        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); //Pauline
         //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
@@ -58,8 +58,8 @@ public class SearchPatient extends HttpServlet {
             }
             // Create the object for an individual
             json += "{\"id\": \"" + patient.getId() + "\",\n";
-            json += "\"name\": \"" + patient.getFirstName() + "\",\n";
-            json += "\"lastName\": \"" + patient.getName() + "\"}\n";
+            json += "\"name\": \"" + patient.getHasFirstName()+ "\",\n";
+            json += "\"lastName\": \"" + patient.getHasName() + "\"}\n";
             cpt++;
         }
         

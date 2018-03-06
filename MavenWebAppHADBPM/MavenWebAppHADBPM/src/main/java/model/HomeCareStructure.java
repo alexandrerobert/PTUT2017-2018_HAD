@@ -1,7 +1,7 @@
 package model;
 
 public enum HomeCareStructure {
-    atHome,
-    homeCare,
-    medicalAnalysisLaboratory
+    AtHome,
+    HomeCare,
+    MedicalAnalysisLaboratory
 };
