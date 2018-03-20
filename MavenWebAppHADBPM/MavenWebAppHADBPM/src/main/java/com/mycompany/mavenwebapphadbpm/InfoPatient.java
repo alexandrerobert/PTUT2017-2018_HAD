@@ -5,6 +5,7 @@
  */
 package com.mycompany.mavenwebapphadbpm;
 
+import model.Ontology;
 import model.Patient;
 import java.io.File;
 import java.io.IOException;

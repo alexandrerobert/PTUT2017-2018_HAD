@@ -135,7 +135,7 @@
                     <select name="disease" id="hasDisease" multiple>
                       <option value="" disabled selected>Disease</option>
                       <option value="VesicularPeritonitis">VesicularPeritonitis</option>
-                      <option value="2">Arthritis</option>
+                      <option value="Arthritis">Arthritis</option>
                       <option value="3">Diabetes</option>
                     </select>
                   </div>
