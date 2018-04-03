@@ -8,6 +8,7 @@ package com.mycompany.mavenwebapphadbpm;
 import model.Ontology;
 import model.Patient;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -36,15 +37,15 @@ public class SearchPatient extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, FileNotFoundException {
 
         // JSON File Creation      
         String json = "{\"patients\": [\n";
         int cpt = 1 ;
 
         // Intialisation
-        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); //Pauline
+//        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); //Pauline
         //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
