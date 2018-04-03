@@ -35,8 +35,8 @@ public class SearchDisease extends HttpServlet {
                 
         
         // Intialisation
-        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         Ontology onto = new Ontology(file);
 
