@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Pauline
  */
-class Disease {
+public class Disease {
     
     String hasDisease;
     int hasStade;

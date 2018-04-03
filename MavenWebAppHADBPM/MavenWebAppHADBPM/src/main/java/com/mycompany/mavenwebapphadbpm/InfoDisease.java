@@ -6,25 +6,25 @@
 package com.mycompany.mavenwebapphadbpm;
 
 import model.Ontology;
-import model.Patient;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Intervention;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 /**
- * Class That will handle the request when a user is looking for a patient The
- * main goal is to take the information about all the patient in the ontology
- * folowwing the pattern given by the user of the web application.
  *
  * @author lexr
  */
-public class SearchPatient extends HttpServlet {
+public class InfoDisease extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,39 +37,51 @@ public class SearchPatient extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        // JSON File Creation      
-        String json = "{\"patients\": [\n";
-        int cpt = 1 ;
+        response.setContentType("text/html;charset=UTF-8");
+        // JSON File Creation     
+        int cpt = 1;
+        //String diseases = "{";
+        String json = "{";
 
         // Intialisation
         File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); //Pauline
-        //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
+        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
+        String disease = request.getParameter("disease");
 
-        /**
-         * A list of all the patients
-         */
-        ArrayList<Patient> patientList = onto.getPatientInOntology(reasoner, "Patient");
-        for (Patient patient : patientList) {
-            if (cpt > 1) {
-                json += ",";
-            }
-            // Create the object for an individual
-            json += "{\"id\": \"" + patient.getId() + "\",\n";
-            json += "\"name\": \"" + patient.getHasFirstName()+ "\",\n";
-            json += "\"lastName\": \"" + patient.getHasName() + "\"}\n";
-            cpt++;
-        }
+        // Pattern of the patient name
+        //String nom = request.getParameter("nom");
+        PrintWriter out = response.getWriter();
         
-        // Close the json file
-        json += "      ]\n}";
-        System.out.println(json);
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        json += "\n\t\t\t\"interventions\": [\n";
+
+        // Retrieve all the informations about a disease
+        ArrayList<Intervention> interventions;
+        try {
+            interventions = onto.listeActions(disease);
+            for (Intervention i : interventions) {
+                if (cpt == 1) {
+                    json += "\t\t\t{\"name\" : \"" + i.getName() + "\",\n";
+                } else {
+                    json += "\n\t\t\t{\"name\" : \"" + i.getName() + "\",\n";
+                }
+                json += "\t\t\t\t\"typeActor\" : \"" + i.getTypeActor() + "\",\n";
+                json += "\t\t\t\t\"duration\" : \"" + i.getDuration() + "\",\n";
+                json += "\t\t\t\t\"unityDuration\" : \"" + i.getUnityDuration() + "\",\n";
+                json += "\t\t\t\t\"frequency\" : \"" + i.getFrequency() + "\",\n";
+                json += "\t\t\t\t\"unityFrequence\" : \"" + i.getUnityFrequency() + "\",\n";
+                json += "\t\t\t\t\"timeofDay\" : \"" + i.getTimeDay() + "\",\n";
+                json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure() + "\"\n\t\t},";
+                cpt++;
+            }
+            // Delete the last coma for the diseases
+            json = json.substring(0, json.length() - 1);
+            json += "\n\t]\n}";
             out.println(json);
+        } catch (OWLOntologyCreationException ex) {
+            Logger.getLogger(InfoDisease.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

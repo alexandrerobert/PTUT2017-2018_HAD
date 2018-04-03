@@ -4,16 +4,6 @@
 <div class="container">
     <div class="section">
 
-        <%-- Search disease --%>
-        <div class="row">
-            <div class="input-field col s6 offset-s3">
-                <i class="material-icons prefix">search</i>
-                <input type="text" class="disease">
-                <label for="autocomplete-input">Search disease</label>
-            </div>
-        </div>
-
-
         <div class="row">
             <div class="col s12" id="lst">
                 <!-- progressBar only while loading data -->
@@ -25,8 +15,6 @@
             </div>
         </div>
 
-
-
     </div>
 </div>
 
@@ -37,4 +25,4 @@
 </body>
 
 </html>
-<script type="text/javascript" src="searchDisease.js"></script>
+<script type="text/javascript" src="infoDisease.js"></script>

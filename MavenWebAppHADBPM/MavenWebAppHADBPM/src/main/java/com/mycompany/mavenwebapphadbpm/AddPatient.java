@@ -43,89 +43,97 @@ public class AddPatient extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         
-        // recover patient's informations with name in addPatient.jsp
-        String lastName = request.getParameter("lastName");
-        String firstName = request.getParameter("firstName");
-        String sex = request.getParameter("sexe");
-        String dobS = request.getParameter("dob");
-        String pob = request.getParameter("pob");
-        String socialSecurityNumber = request.getParameter("socialSecurityNumber");     //better    // int socialSecurityNumber = Integer.parseInt(request.getParameter("socialSecurityNumber"));
-        String address = request.getParameter("address");
-        String phoneNumber = request.getParameter("phoneNumber");                       //better    //int phoneNumber = Integer.parseInt(request.getParameter("phoneNumber"));
-        String email = request.getParameter("email");
-        String marital = request.getParameter("marital");
-        String internet = request.getParameter("internet");                             //better    //boolean internet = Boolean.parseBoolean(request.getParameter("internet"));
-        String size = request.getParameter("size");                                     //better   // float size = Float.parseFloat(request.getParameter("size"));
-        String weight = request.getParameter("weight");                                 //better    //  float weight = Float.parseFloat(request.getParameter("weight"));
-        String allergies = request.getParameter("allergies");
-        String disease = request.getParameter("disease");
-        String previous = request.getParameter("previous");
-        String entourage = request.getParameter("entourage");                           //better    // boolean entourage = Boolean.parseBoolean(request.getParameter("entourage"));
-        String place = request.getParameter("place");                                   //better    //boolean entourage = Boolean.parseBoolean(request.getParameter("entourage"));
-        String note = request.getParameter("note");
+//        // recover patient's informations with name in addPatient.jsp
+//        String lastName = request.getParameter("lastName");
+//        String firstName = request.getParameter("firstName");
+//        String sex = request.getParameter("sexe");
+//        String dobS = request.getParameter("dob");
+//        String pob = request.getParameter("pob");
+//        String socialSecurityNumber = request.getParameter("socialSecurityNumber");     //better    // int socialSecurityNumber = Integer.parseInt(request.getParameter("socialSecurityNumber"));
+//        String address = request.getParameter("address");
+//        String phoneNumber = request.getParameter("phoneNumber");                       //better    //int phoneNumber = Integer.parseInt(request.getParameter("phoneNumber"));
+//        String email = request.getParameter("email");
+//        String marital = request.getParameter("marital");
+//        String internet = request.getParameter("internet");                             //better    //boolean internet = Boolean.parseBoolean(request.getParameter("internet"));
+//        String size = request.getParameter("size");                                     //better   // float size = Float.parseFloat(request.getParameter("size"));
+//        String weight = request.getParameter("weight");                                 //better    //  float weight = Float.parseFloat(request.getParameter("weight"));
+//        String allergies = request.getParameter("allergies");
+//        String disease = request.getParameter("disease");
+//        String previous = request.getParameter("previous");
+//        String entourage = request.getParameter("entourage");                           //better    // boolean entourage = Boolean.parseBoolean(request.getParameter("entourage"));
+//        String place = request.getParameter("place");                                   //better    //boolean entourage = Boolean.parseBoolean(request.getParameter("entourage"));
+//        String note = request.getParameter("note");
+//        
+//        //redirection if add valid or not 
+//        String vu_connValide = "/addPatient.jsp";
+//        String vu_connInvalide = "/searhPatient.jsp"; // to verify if add is invalid to modify after
+//
+//        // Intialisation
+//        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
+//        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+//        //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
+//        Ontology onto = new Ontology(file);
+//        OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
+//       
+//        
+//        // Insert patient in ontology
+//        Info LastName = new Info("hasName", lastName, "String"); // hasName
+//        Info FirstName = new Info("hasFirstName", firstName, "String");// hasFirstName
+//        Info Sex = new Info("hasSex", sex, "String");// hasSex
+//        Info Dob = new Info("hasDateOfBirth", dobS, "Date");// hasDateOfBirth
+//        Info Pob = new Info("hasPlaceOfBirth", pob, "String"); // hasPlaceOfBirth
+//	Info SocialSecurityNumber = new Info("hasSocialSecurityNumber", socialSecurityNumber, "int"); // hasSocialSecurityNumber
+//        Info Address = new Info("hasAddress", address, "String");// hasAddress
+//	Info PhoneNumber = new Info("hasPhoneNumber", phoneNumber, "int");// hasPhoneNumber
+//        Info Email = new Info("hasEmail", email, "String"); // hasEmail
+//        Info Marital = new Info("hasMaritalStatus",marital,"String");// hasMaritalStatus
+//        Info Internet = new Info("hasInternetAccess", internet, "boolean");
+//        Info Size = new Info("hasSize", size, "float");         // hasSize
+//        Info Weight = new Info("hasWeight", weight, "float"); // hasWeight
+//        Info Allergies = new Info("hasAllergies", allergies, "String"); //hasAllergies
+//        Info Disease = new Info("hasDisease", disease, "String");// hasDisease
+//	Info Previous = new Info("hasPrevious", previous, "String");// hasPrevious
+//        Info Entourage = new Info("hasValidEntourage", entourage, "boolean");// hasValidEntourage
+//        Info Place = new Info("hasAccessiblePlace", place, "boolean");// hasAccessiblePlace
+//        Info Note = new Info("hasNotes", note, "String");// hasNotes
+//        //Info Note2 = new Info("Disease", note, "String");// hasNotes        //test à enlever
+//
+//        
+//        //Create ArrayList to insert in the file ontology
+//	ArrayList<Info> infos = new ArrayList<>();
+//	infos.add(Disease);	
+//        infos.add(LastName);
+//	infos.add(FirstName);
+//	infos.add(Sex);
+//	infos.add(Dob);
+//	infos.add(Pob);
+//	infos.add(SocialSecurityNumber);
+//	infos.add(Address);
+//	infos.add(PhoneNumber);
+//	infos.add(Email);
+//	infos.add(Marital);
+//	infos.add(Internet);
+//	infos.add(Size);
+//	infos.add(Weight);
+//	infos.add(Allergies);
+//	infos.add(Previous);
+//	infos.add(Entourage);
+//	infos.add(Place);
+//        infos.add(Note);
+//		
+//	
+//
+//        // Add the patient to the ontology
+//        String id = new SimpleDateFormat("ddMMyyyyhhMMss").format(Calendar.getInstance().getTime());
+//        onto.addPatientIndividual(infos, id);
         
-        //redirection if add valid or not 
-        String vu_connValide = "/addPatient.jsp";
-        String vu_connInvalide = "/searhPatient.jsp"; // to verify if add is invalid to modify after
-
-        // Intialisation
-        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
-        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
-        //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
-        Ontology onto = new Ontology(file);
-        OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
-       
         
-        // Insert patient in ontology
-        Info LastName = new Info("hasName", lastName, "String"); // hasName
-        Info FirstName = new Info("hasFirstName", firstName, "String");// hasFirstName
-        Info Sex = new Info("hasSex", sex, "String");// hasSex
-        Info Dob = new Info("hasDateOfBirth", dobS, "Date");// hasDateOfBirth
-        Info Pob = new Info("hasPlaceOfBirth", pob, "String"); // hasPlaceOfBirth
-	Info SocialSecurityNumber = new Info("hasSocialSecurityNumber", socialSecurityNumber, "int"); // hasSocialSecurityNumber
-        Info Address = new Info("hasAddress", address, "String");// hasAddress
-	Info PhoneNumber = new Info("hasPhoneNumber", phoneNumber, "int");// hasPhoneNumber
-        Info Email = new Info("hasEmail", email, "String"); // hasEmail
-        Info Marital = new Info("hasMaritalStatus",marital,"String");// hasMaritalStatus
-        Info Internet = new Info("hasInternetAccess", internet, "boolean");
-        Info Size = new Info("hasSize", size, "float");         // hasSize
-        Info Weight = new Info("hasWeight", weight, "float"); // hasWeight
-        Info Allergies = new Info("hasAllergies", allergies, "String"); //hasAllergies
-        Info Disease = new Info("hasDisease", disease, "String");// hasDisease
-	Info Previous = new Info("hasPrevious", previous, "String");// hasPrevious
-        Info Entourage = new Info("hasValidEntourage", entourage, "boolean");// hasValidEntourage
-        Info Place = new Info("hasAccessiblePlace", place, "boolean");// hasAccessiblePlace
-        Info Note = new Info("hasNotes", note, "String");// hasNotes
-        //Info Note2 = new Info("Disease", note, "String");// hasNotes        //test à enlever
-
         
-        //Create ArrayList to insert in the file ontology
-	ArrayList<Info> infos = new ArrayList<>();
-	infos.add(Disease);	
-        infos.add(LastName);
-	infos.add(FirstName);
-	infos.add(Sex);
-	infos.add(Dob);
-	infos.add(Pob);
-	infos.add(SocialSecurityNumber);
-	infos.add(Address);
-	infos.add(PhoneNumber);
-	infos.add(Email);
-	infos.add(Marital);
-	infos.add(Internet);
-	infos.add(Size);
-	infos.add(Weight);
-	infos.add(Allergies);
-	infos.add(Previous);
-	infos.add(Entourage);
-	infos.add(Place);
-        infos.add(Note);
-		
-	
-
-        // Add the patient to the ontology
-        String id = new SimpleDateFormat("ddMMyyyyhhMMss").format(Calendar.getInstance().getTime());
-        onto.addPatientIndividual(infos, id);
+        
+        String disease = request.getParameter("disease").toString();
+        
+            System.out.println(disease);
+        
        
     }
 

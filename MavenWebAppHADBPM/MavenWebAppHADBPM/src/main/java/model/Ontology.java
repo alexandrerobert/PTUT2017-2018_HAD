@@ -1,35 +1,28 @@
-package com.mycompany.mavenwebapphadbpm;
+package model;
 
-import model.Intervention;
-import model.Patient;
-import model.Sexe;
+import com.mycompany.mavenwebapphadbpm.Info;
+import model.*;
 import static org.semanticweb.owlapi.util.OWLAPIStreamUtils.asUnorderedSet;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.MaritalStatus;
-import java.util.stream.Stream;
 import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxEditorParser;
-import org.eclipse.rdf4j.model.datatypes.XMLDateTime;
+import org.semanticweb.HermiT.Reasoner;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
 import org.semanticweb.owlapi.expression.ParserException;
 import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
-import org.semanticweb.owlapi.formats.OWLXMLDocumentFormat;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -44,12 +37,9 @@ import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
-import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLProperty;
-import org.semanticweb.owlapi.model.OWLPropertyAssertionObject;
 import org.semanticweb.owlapi.reasoner.Node;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
@@ -58,8 +48,8 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.ShortFormProvider;
+import org.semanticweb.owlapi.util.SimpleShortFormProvider;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
-import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 /**
  * This class will represent the DAO of the app HADBPM
@@ -177,6 +167,8 @@ public class Ontology {
 //            }
 //        }));
 //    } //// Methode non utilisée
+    
+    
     /**
      *
      * Display all the individual from a class
@@ -207,6 +199,40 @@ public class Ontology {
 
         return pats;
     }
+    
+    /**
+     *
+     * Display all the individual from a class
+     *
+     * @param reasoner
+     * @param individualName the Name of the ontology class in which the
+     * indivuals are
+     * @return An ArrayList<String> Containing all the individual from a
+     * specified class
+     */
+    public ArrayList<String> searchDisease(OWLReasoner reasoner, String individualName) {
+        ArrayList<String> pats = new ArrayList<>();
+        //ArrayList<String> liste = new ArrayList<>();
+        onto.classesInSignature().forEach(c -> {
+            if (c.getIRI().getFragment().equals(individualName)) {
+                patient = c;
+            }
+        });
+
+        // Display all the individual
+        for (OWLNamedIndividual cls : reasoner.getInstances(patient).getFlattened()) {
+            //liste.add(cls.getIRI().getRemainder().get());
+            //pats.add()
+
+            //System.out.println("cls : " + cls.getIRI().getRemainder().get());
+            pats.add(cls.getIRI().getRemainder().get());
+        }
+
+        return pats;
+    }
+    
+    
+    
 
     /**
      * Get All the properties for an individual an displays the values Method
@@ -624,19 +650,19 @@ public class Ontology {
      * @throws OWLOntologyCreationException
      */
     public ArrayList<Intervention> listeActions(String disease) throws OWLOntologyCreationException {
-        query b = new query();
+        //query b = new query();
         ArrayList<Intervention> actions = new ArrayList<>();
 
         // Get the actions for a disease
         String listeActs = "isInvolvedToCareDisease value " + disease;
-        for (String a : b.DLQuery(listeActs)) {
+        for (String a : DLQuery(listeActs)) {
             //System.out.println("Creation de l'intervetion " + a);
             // Create the action
             Intervention inter = new Intervention(a);
 
             // Set the actor to the action
             String actor = "performsAction value " + a;
-            ArrayList<String> act = b.DLQuery(actor);
+            ArrayList<String> act = DLQuery(actor);
             if (!act.isEmpty()) {
                 inter.setTypeActor(act.get(0));
             }
@@ -645,8 +671,8 @@ public class Ontology {
             // Set the duration of the action
             // Set the frequency
             String preFreq = "isFrequencyActionForDisease value " + a;
-            String freq = "isFrequencyOfAction value " + b.DLQuery(preFreq).get(0);
-            ArrayList<String> f = b.DLQuery(freq);
+            String freq = "isFrequencyOfAction value " + DLQuery(preFreq).get(0);
+            ArrayList<String> f = DLQuery(freq);
             if (!f.isEmpty()) {
                 inter.setFrequency(f.get(0));
             }
@@ -667,12 +693,30 @@ public class Ontology {
         return actions;
 
     }
+    
 
     /**
      * *************************************************************************
      * Used to make the DL-Queries Work *
      * **************************************************************************
      */
+    
+    ArrayList<String> DLQuery(String query) throws OWLOntologyCreationException {
+        OWLOntologyManager om = OWLManager.createOWLOntologyManager();
+
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl");
+
+        OWLOntology pressInnovOntology = om.loadOntologyFromOntologyDocument(file);
+
+        OWLReasoner reasoner = new Reasoner.ReasonerFactory().createReasoner(pressInnovOntology);
+        ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
+        DLQueryPrinter dlQueryPrinter = new DLQueryPrinter(new DLQueryEngine(reasoner, shortFormProvider), shortFormProvider);
+        //dlQueryPrinter.askQuery(query);     
+        
+        return dlQueryPrinter.ask(query);
+
+    }
+    
     /**
      * Run the DL Queries (Reasoner)
      */
