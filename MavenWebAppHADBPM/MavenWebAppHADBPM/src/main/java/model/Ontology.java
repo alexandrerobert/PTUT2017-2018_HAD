@@ -1,9 +1,7 @@
 package model;
 
 import com.mycompany.mavenwebapphadbpm.Info;
-import model.*;
 import static org.semanticweb.owlapi.util.OWLAPIStreamUtils.asUnorderedSet;
-
 import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -16,10 +14,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.MaritalStatus;
 import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxEditorParser;
 import org.semanticweb.HermiT.Reasoner;
-
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
 import org.semanticweb.owlapi.expression.ParserException;

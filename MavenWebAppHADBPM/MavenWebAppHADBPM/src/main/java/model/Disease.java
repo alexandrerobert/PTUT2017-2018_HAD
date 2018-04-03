@@ -12,9 +12,13 @@ import java.util.ArrayList;
  * @author Pauline
  */
 public class Disease {
+
+    public Disease(String hasDisease, ArrayList<Intervention> interventions) {
+        this.hasDisease = hasDisease;
+        this.interventions = interventions;
+    }
     
     String hasDisease;
-    int hasStade;
     ArrayList<Intervention> interventions;
 
     public String getHasDisease() {
@@ -24,15 +28,6 @@ public class Disease {
     public void setHasDisease(String hasDisease) {
         this.hasDisease = hasDisease;
     }
-
-    public int getHasStade() {
-        return hasStade;
-    }
-
-    public void setHasStade(int hasStade) {
-        this.hasStade = hasStade;
-    }
-
 
     public ArrayList<Intervention> getInterventions() {
         return interventions;

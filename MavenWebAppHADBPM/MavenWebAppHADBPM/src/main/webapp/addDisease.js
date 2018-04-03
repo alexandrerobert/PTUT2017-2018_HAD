@@ -211,29 +211,33 @@ $(document).ready(function () {
 
 
     $("#addDisease").click(function() {
-      json = '{ "data" : [ { "name": "'+ $("#nameDisease").val() +'", "interventions" : [';
-      
-      for(i=0; i<idInt; i++){
-        json += '{ "Actor" : "' + $("#actor-"+i).val() + '"},';
-        json += '{ "HomeCareStructure" : "' + $("#HomeCareStructure-"+i).val() + '"},';
-        json += '{ "Action" : "' + $("#action-"+i).val() + '"},';
-        json += '{ "Frequence" : "' + $("#freq-"+i).val() + '"},';
-        json += '{ "FrequenceUnit" : "' + $("#freqUnit-"+i).val() + '"},';
-        json += '{ "FrequenceMoment" : "' + $("#freqMoment-"+i).val() + '"},';
-        json += '{ "Duration" : "' + $("#duration-"+i).val() + '"},';
-        json += '{ "Duration Unit" : "' + $("#durationUnit-"+i).val() + '"},';  
-      };
-      json = json.substring(0,json.length-1);
-      json += ']}]}';
-      dataJson = jQuery.parseJSON(json);
-      console.log(dataJson);
-      $.ajax({
-        url: 'AddDisease',
-        method: 'POST',
-        data : { "data" : json},
-        dataType : "text/html"
-        
-    });
+      json = '{ "interventions" : [';
+      dataJson = "";
+      if(idInt>0){
+        for(i=0; i<idInt+1; i++){
+          json += '[{ "Actor" : "' + $("#actor-"+i).val() + '"},';
+          json += '{ "HomeCareStructure" : "' + $("#HomeCareStructure-"+i).val() + '"},';
+          json += '{ "Action" : "' + $("#action-"+i).val() + '"},';
+          json += '{ "Frequence" : "' + $("#freq-"+i).val() + '"},';
+          json += '{ "FrequenceUnit" : "' + $("#freqUnit-"+i).val() + '"},';
+          json += '{ "FrequenceMoment" : "' + $("#freqMoment-"+i).val() + '"},';
+          json += '{ "Duration" : "' + $("#duration-"+i).val() + '"},';
+          json += '{ "Duration Unit" : "' + $("#durationUnit-"+i).val() + '"}],';  
+        };
+        json = json.substring(0,json.length-1);
+        json += ']}';
+        dataJson = jQuery.parseJSON(json);
+        console.log(dataJson);
+      }
+      if($("#nameDisease").val()!==""){
+        $.ajax({
+          url: 'AddDisease',
+          method: 'POST',
+          data : { "interventions" : json,
+                    "name" : $("#nameDisease").val()},
+          dataType : "text/html"      
+        });
+      }   
     })
   };
 

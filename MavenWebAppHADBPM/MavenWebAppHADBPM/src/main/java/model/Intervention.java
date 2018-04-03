@@ -1,6 +1,5 @@
 package model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Intervention {
@@ -11,11 +10,22 @@ public class Intervention {
     private UnityTime unityDuration;
     private String frequency;
     private UnityTime unityFrequency;
-    private ArrayList<TimeDay> timeDay;
+    private TimeDay timeDay;
     private HomeCareStructure homeCareStructure;
 
     public String getName() {
         return name;
+    }
+
+    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure) {
+        this.name = name;
+        this.typeActor = typeActor;
+        this.duration = duration;
+        this.unityDuration = unityDuration;
+        this.frequency = frequency;
+        this.unityFrequency = unityFrequency;
+        this.timeDay = timeDay;
+        this.homeCareStructure = homeCareStructure;
     }
 
     public void setName(String name) {
@@ -77,7 +87,7 @@ public class Intervention {
         this.name = name;
     }
     
-    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, ArrayList<TimeDay> timeDay, HomeCareStructure homeCareStructure, ArrayList<String> moment) {
+    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure, ArrayList<String> moment) {
         this.name = name;
         this.typeActor = typeActor;
         this.duration = duration;
@@ -88,11 +98,11 @@ public class Intervention {
         this.homeCareStructure = homeCareStructure;
     }
 
-    public ArrayList<TimeDay> getTimeDay() {
+    public TimeDay getTimeDay() {
         return timeDay;
     }
 
-    public void setTimeDay(ArrayList<TimeDay> timeDay) {
+    public void setTimeDay(TimeDay timeDay) {
         this.timeDay = timeDay;
     }
 
