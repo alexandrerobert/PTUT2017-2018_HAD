@@ -134,9 +134,6 @@
                     <i class="material-icons prefix">add_circle</i>
                     <select name="disease" id="hasDisease" multiple>
                       <option value="" disabled selected>Disease</option>
-                      <option value="VesicularPeritonitis">VesicularPeritonitis</option>
-                      <option value="Arthritis">Arthritis</option>
-                      <option value="3">Diabetes</option>
                     </select>
                   </div>
 
@@ -200,21 +197,6 @@
 
   <%@include file="pied.jsp" %>
 
-  <script>
-  $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 120, // Creates a dropdown of 15 years to control year,
-    closeOnSelect: false, // Close upon selecting a date,
-    format: 'dd/mm/yyyy'
-  });
-
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-
-  $(document).ready(function() {
-    $('select').material_select();
-  });
-  </script>
+  <script src="addPatient.js"></script>
 </body>
 </html>

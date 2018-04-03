@@ -25,6 +25,10 @@
         <servlet-class>com.mycompany.mavenwebapphadbpm.InfoDisease</servlet-class>
 >>>>>>> origin/master
     </servlet>
+    <servlet>
+        <servlet-name>GetDisease</servlet-name>
+        <servlet-class>com.mycompany.mavenwebapphadbpm.GetDisease</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchPatient</servlet-name>
         <url-pattern>/SearchPatient</url-pattern>
@@ -49,6 +53,10 @@
         <servlet-name>InfoDisease</servlet-name>
         <url-pattern>/InfoDisease</url-pattern>
 >>>>>>> origin/master
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetDisease</servlet-name>
+        <url-pattern>/GetDisease</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

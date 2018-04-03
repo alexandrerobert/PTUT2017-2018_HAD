@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,7 +75,7 @@ public class Ontology {
         // Create the ontology manager
         man = OWLManager.createOWLOntologyManager();
         try {
-            onto = man.loadOntologyFromOntologyDocument(file);
+            onto = man.loadOntologyFromOntologyDocument( new File(file.getAbsolutePath()));
         } catch (OWLOntologyCreationException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -111,62 +112,6 @@ public class Ontology {
 
     }
 
-//    /**
-//     * In the ontology get each individual and display for each of them the
-//     * Object property value inferred by the reasoner
-//     *
-//     * @param reasoner
-//     */
-//    public void getAllIndividual(OWLReasoner reasoner) {
-//        onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
-//            NodeSet<OWLNamedIndividual> individualValues = reasoner.getObjectPropertyValues(i, p);
-//            Set<OWLNamedIndividual> values = asUnorderedSet(individualValues.entities());
-//            String head = "The property values for " + p + " for individual " + i + " are: \n";
-//            System.out.println(head);
-//            for (OWLNamedIndividual ind : values) {
-//                String rs = "\t" + ind + "\n";
-//                System.out.println(rs);
-//            }
-//        }));
-//    }
-//    /**
-//     * In the ontology get each individual and display for each of them the Data
-//     * property value inferred by the reasoner
-//     *
-//     * @param reasoner
-//     * @throws IOException
-//     */
-//    public void displayAllIndividualProperties(OWLReasoner reasoner) throws IOException {
-//        // Create a file for the property value of an individual
-//        File propValue = new File("propertiesValues.txt");
-//        @SuppressWarnings("resource")
-//        FileWriter propValueWriter = new FileWriter(propValue);
-//
-//        onto.individualsInSignature().forEach(i -> onto.dataPropertiesInSignature().forEach(p -> {
-//            Set<OWLLiteral> individualValues = reasoner.getDataPropertyValues(i, p);
-//            Set<OWLLiteral> values = asUnorderedSet(individualValues.parallelStream());
-//            String head = "The property values for " + p + " for individual " + i + " are: \n";
-//            // System.out.println(head);
-//            try {
-//                propValueWriter.write(head);
-//            } catch (IOException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//            for (OWLLiteral ind : values) {
-//
-//                String rs = "\t" + ind + "\n";
-//                // System.out.println(rs);
-//                try {
-//                    propValueWriter.write(rs);
-//                } catch (IOException e) {
-//                    // TODO Auto-generated catch block
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        }));
-//    } //// Methode non utilisée
     
     
     /**
@@ -520,6 +465,24 @@ public class Ontology {
         }));
         return pat;
     }
+    
+    /**
+     * 
+     */
+    public List<String> getListofDisease() {
+        ArrayList disease = new ArrayList<>();
+        onto.getClassesInSignature().forEach(c -> {
+            //System.out.println(cls);
+            if (c.getIRI().getRemainder().get().equals("Disease")) { 
+                for (OWLNamedIndividual d : useReasoner(onto).getInstances(c).getFlattened()) {
+                    System.out.println(d.getIRI().getRemainder().get());
+                    disease.add(d.getIRI().getRemainder().get());
+                    
+                }
+            }
+        });
+        return disease;
+    }
 
     /**
      * Add all the information of the patient in the ontology Method used in
@@ -569,7 +532,9 @@ public class Ontology {
 
         // Save the ontology
         try {
-            this.getOntology().saveOntology();
+            System.out.println("coucou");
+            this.onto.saveOntology();
+            //this.getOntology().saveOntology();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -577,6 +542,52 @@ public class Ontology {
 
     }
 
+    public void addDisease(Disease d, String name) {
+     
+        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+        OWLDataFactory df = OWLManager.getOWLDataFactory();
+
+        // Disease's IRI
+        OWLClass diseaseIRI = df.getOWLClass(IRI.create(owlIRI + "#Disease"));
+
+        // Individual disease
+        OWLIndividual disease = df.getOWLNamedIndividual(IRI.create(owlIRI + "#" + name));
+
+        // Create a link between the class disease and the individual's disease
+        OWLClassAssertionAxiom type = df.getOWLClassAssertionAxiom(diseaseIRI, disease);
+        // Create the axiom corresponding to the link between the disease 
+        // and the individual's disease
+        AddAxiom axiomType = new AddAxiom(onto, type);
+        // Add the former link to the ontology
+        manager.applyChange(axiomType);
+
+        
+        // Actions
+        for (Intervention i : d.getInterventions()) {
+            // Action to be linked to the disease
+            OWLIndividual action = df.getOWLNamedIndividual(owlIRI + "#"+i.getName());
+            
+            OWLObjectProperty involvesAction = df.getOWLObjectProperty(owlIRI + "#involvesAction");
+            // Link the disease to the 
+            OWLObjectPropertyAssertionAxiom axiomInvolvesAction = df.getOWLObjectPropertyAssertionAxiom(involvesAction, disease,
+                    action);
+            // Add the axiom to the ontology
+            AddAxiom addAxiomInvolvesAction = new AddAxiom(onto, axiomInvolvesAction);
+            // Save the axiom in the ontology
+            manager.applyChange(addAxiomInvolvesAction);
+        }
+
+        // Save the ontology
+        try {
+            this.getOntology().saveOntology();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+    }
+    
+    
     /**
      * Add all the dataProperties in a list of axioms Method used in addPatient
      * Used by the method addPatientIndividual
@@ -636,6 +647,7 @@ public class Ontology {
 
             // Add to the list
             axioms.add(addAxiom);
+            
         }
 
         return axioms;
@@ -668,20 +680,29 @@ public class Ontology {
             }
 
             // Set the HomecareStructure
+            
             // Set the duration of the action
+            
             // Set the frequency
             String preFreq = "isFrequencyActionForDisease value " + a;
             String freq = "isFrequencyOfAction value " + DLQuery(preFreq).get(0);
             ArrayList<String> f = DLQuery(freq);
             if (!f.isEmpty()) {
+                System.out.println("Frequency : " + f.toString());
                 inter.setFrequency(f.get(0));
             }
+            
 
             // Set the Number of time it has to be performed
+            
             // Set the moment of the day that have to be performed
-
-
-
+            String isTod = "isFrequencyActionForDisease value " + a;
+            String tod = "isFrequencyOfAction value " + DLQuery(isTod).get(0); //isTimeOfDayToPerformsAction
+            ArrayList<String> t = DLQuery(tod);
+            if (!t.isEmpty()) {
+                System.out.println("Frequency : " + t.toString());
+                inter.setFrequency(t.get(0));
+            }
 
             // Add the complete intervention to the list
             actions.add(inter);
@@ -698,7 +719,7 @@ public class Ontology {
     /**
      * *************************************************************************
      * Used to make the DL-Queries Work *
-     * **************************************************************************
+     * *************************************************************************
      */
     
     ArrayList<String> DLQuery(String query) throws OWLOntologyCreationException {
@@ -827,17 +848,18 @@ public class Ontology {
                 System.out.println("No class expression specified");
             } else {
                 try {
-                    //StringBuilder sb = new StringBuilder();
-                    //sb.append("\nQUERY:   ").append(classExpression).append("\n\n");
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("\nQUERY:   ").append(classExpression).append("\n\n");
 
                     Set<OWLNamedIndividual> individuals = dlQueryEngine.getInstances(
                             classExpression, true);
 
                     for (OWLNamedIndividual i : individuals) {
-                        rs.add(i.getIRI().getRemainder().get());
+                        rs.add(i.getIRI().toString().split("#")[1]);
                     }
                     //rs = listEntities("Instances", individuals, sb);
                     //System.out.println(sb.toString());
+                    
                 } catch (ParserException e) {
                     System.out.println(e.getMessage());
                 }
