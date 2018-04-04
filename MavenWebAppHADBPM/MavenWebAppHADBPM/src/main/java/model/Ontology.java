@@ -57,10 +57,10 @@ public class Ontology {
 
     int nbIndPatient = 0;
     int nbTot = 0;
-    OWLClass patient = null;
-    private OWLOntology onto = null;
+    OWLClass patient;
+    private OWLOntology onto;
     private String owlIRI = "";
-    private OWLOntologyManager man = null;
+    private OWLOntologyManager man;
 
     /**
      * Constructor
@@ -71,7 +71,7 @@ public class Ontology {
         // Create the ontology manager
         man = OWLManager.createOWLOntologyManager();
         try {
-            onto = man.loadOntologyFromOntologyDocument( new File(file.getAbsolutePath()));
+            onto = man.loadOntologyFromOntologyDocument(new File(file.getAbsolutePath()));
         } catch (OWLOntologyCreationException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -176,8 +176,8 @@ public class Ontology {
     
 
     /**
-     * Get All the properties for an individual an displays the values Method
-     * used in InfoPatient
+     * Get All the properties for an individual an displays the values 
+     * Method used in InfoPatient
      *
      * @param reasoner Reasoner that will make the inferences
      * @param individual The String Name of the Individual
@@ -489,8 +489,7 @@ public class Ontology {
      * @param name The name of the individual to add to the ontology
      */
     public void addPatientIndividual(ArrayList<Info> data, String name) {
-        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-        OWLDataFactory df = OWLManager.getOWLDataFactory();
+        OWLDataFactory df = man.getOWLDataFactory();
 
         // Actor's IRI
         OWLClass actorIRI = df.getOWLClass(IRI.create(owlIRI + "#Patient"));
@@ -504,7 +503,7 @@ public class Ontology {
         // individual
         AddAxiom axiomType = new AddAxiom(onto, type);
         // Add the former link to the ontology
-        manager.applyChange(axiomType);
+        man.applyChange(axiomType);
 
         // Disease individual
         OWLIndividual disease = df.getOWLNamedIndividual(owlIRI + "#" + ((Info) data.get(0)).getValue());
@@ -517,31 +516,43 @@ public class Ontology {
         // Create the axiom
         AddAxiom addAxiomHasDisease = new AddAxiom(onto, axiomHasDisease);
         // Apply the axiom to the ontology
-        manager.applyChange(addAxiomHasDisease);
+        man.applyChange(addAxiomHasDisease);
 
         // Delete the axiom of the disease
         data.remove(data.get(0));
 
         for (AddAxiom axiom : addDataProperties(data, patient)) {
-            manager.applyChange(axiom);
+            man.applyChange(axiom);
         }
 
         // Save the ontology
         try {
-            System.out.println("coucou");
-            this.onto.saveOntology();
-            //this.getOntology().saveOntology();
+            //System.out.println("coucou");
+            //this.onto.saveOntology(); // PLENTE
+            //this.getOntology().saveOntology(); // PLENTE
+            //this.getOntology().saveOntology(this.getOntology().getFormat()); // PLENTE
+            //manager.saveOntology(onto); // NE FAIS RIENT
+            //onto.getOWLOntologyManager().saveOntology(onto); // Enregistre puis lecture impossible
+            //onto.saveOntology(onto.getFormat(), manager.getOntologyDocumentIRI(onto));
+            //System.out.println(manager.getOntologyDocumentIRI(this.getOntology()));
+            //System.out.println(owlIRI);
+            //System.out.println(onto.getOntologyID().getVersionIRI());
+            //man.saveOntology(onto, onto.getFormat().asPrefixOWLDocumentFormat()); // MARCHE TOUJOURS PAS
+            //man.saveOntology(onto);
+            //this.getOntology().saveOntology(); MARCHE PAS
+            onto.saveOntology(onto.getFormat(), man.getOntologyDocumentIRI(onto));
+            
+            System.out.print("Sauvegarde ?????");
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            System.out.println("-/-/-/-/-/-/-/-/-/-/-/-PLENTE-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-");
         }
 
     }
 
     public void addDisease(Disease d, String name) {
-     
-        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-        OWLDataFactory df = OWLManager.getOWLDataFactory();
+        OWLDataFactory df = man.getOWLDataFactory();
 
         // Disease's IRI
         OWLClass diseaseIRI = df.getOWLClass(IRI.create(owlIRI + "#Disease"));
@@ -555,7 +566,7 @@ public class Ontology {
         // and the individual's disease
         AddAxiom axiomType = new AddAxiom(onto, type);
         // Add the former link to the ontology
-        manager.applyChange(axiomType);
+        man.applyChange(axiomType);
 
         
         // Actions
@@ -570,7 +581,7 @@ public class Ontology {
             // Add the axiom to the ontology
             AddAxiom addAxiomInvolvesAction = new AddAxiom(onto, axiomInvolvesAction);
             // Save the axiom in the ontology
-            manager.applyChange(addAxiomInvolvesAction);
+            man.applyChange(addAxiomInvolvesAction);
         }
 
         // Save the ontology
@@ -594,7 +605,7 @@ public class Ontology {
      */
     public ArrayList<AddAxiom> addDataProperties(ArrayList<Info> data, OWLIndividual patient) {
         ArrayList<AddAxiom> axioms = new ArrayList<>();
-        OWLDataFactory df = OWLManager.getOWLDataFactory();
+        OWLDataFactory df = man.getOWLDataFactory();
 
         for (Info dp : data) {
             // Add data Properties to the individual
