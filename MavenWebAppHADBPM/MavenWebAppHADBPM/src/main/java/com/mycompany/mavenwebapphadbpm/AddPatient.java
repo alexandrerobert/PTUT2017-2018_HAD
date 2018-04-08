@@ -70,7 +70,7 @@ public class AddPatient extends HttpServlet {
         String vu_connInvalide = "/searhPatient.jsp"; // to verify if add is invalid to modify after
 
         // Intialisation
-        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
+        File file = new File("HCO.owl"); //ALEXANDRE
         //File file = new File("//home//lexr//Dropbox//Ontoflow//CodeSabrina//Ontologies//HCBPMNOntology//HCO.owl");
         //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
         //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
