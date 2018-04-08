@@ -49,8 +49,8 @@ import org.semanticweb.owlapi.util.SimpleShortFormProvider;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 
 /**
- * This class will represent the DAO of the app HADBPM
- *
+ * This class will represent the DAO of the app HADBPM<br />
+ * Contains all the methods to read and write the ontology
  * @author lexr
  */
 public class Ontology {
@@ -58,8 +58,9 @@ public class Ontology {
     int nbIndPatient = 0;
     int nbTot = 0;
     OWLClass patient;
+    OWLClass disease;
     private OWLOntology onto;
-    private String owlIRI = "";
+    private String owlIRI;
     private OWLOntologyManager man;
 
     /**
@@ -73,7 +74,6 @@ public class Ontology {
         try {
             onto = man.loadOntologyFromOntologyDocument(new File(file.getAbsolutePath()));
         } catch (OWLOntologyCreationException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         // Get the IRI of the owl file
@@ -121,21 +121,21 @@ public class Ontology {
      * specified class
      */
     public ArrayList<Patient> getPatientInOntology(OWLReasoner reasoner, String individualName) {
+        reasoner.precomputeInferences();
         ArrayList<Patient> pats = new ArrayList<>();
         //ArrayList<String> liste = new ArrayList<>();
         onto.classesInSignature().forEach(c -> {
+          
             if (c.getIRI().getFragment().equals(individualName)) {
                 patient = c;
             }
+          
         });
-
+       
         // Display all the individual
         for (OWLNamedIndividual cls : reasoner.getInstances(patient).getFlattened()) {
-            //liste.add(cls.getIRI().getRemainder().get());
-            //pats.add()
-
-            //System.out.println("cls : " + cls.getIRI().getRemainder().get());
-            pats.add(searchPatient(cls.getIRI().getRemainder().get(), reasoner));
+                pats.add(searchPatient(cls.getIRI().getFragment(), reasoner));
+            
         }
 
         return pats;
@@ -153,19 +153,16 @@ public class Ontology {
      */
     public ArrayList<String> searchDisease(OWLReasoner reasoner, String individualName) {
         ArrayList<String> pats = new ArrayList<>();
-        //ArrayList<String> liste = new ArrayList<>();
+        
+        // Get all the Disease Individual
         onto.classesInSignature().forEach(c -> {
             if (c.getIRI().getFragment().equals(individualName)) {
-                patient = c;
+                disease = c;
             }
         });
 
         // Display all the individual
-        for (OWLNamedIndividual cls : reasoner.getInstances(patient).getFlattened()) {
-            //liste.add(cls.getIRI().getRemainder().get());
-            //pats.add()
-
-            //System.out.println("cls : " + cls.getIRI().getRemainder().get());
+        for (OWLNamedIndividual cls : reasoner.getInstances(disease).getFlattened()) {
             pats.add(cls.getIRI().getRemainder().get());
         }
 
@@ -176,7 +173,7 @@ public class Ontology {
     
 
     /**
-     * Get All the properties for an individual an displays the values 
+     * Get All the properties for an individual an displays the values <br />
      * Method used in InfoPatient
      *
      * @param reasoner Reasoner that will make the inferences
@@ -322,116 +319,12 @@ public class Ontology {
 
             }
         }));
-
-        onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
-            NodeSet<OWLNamedIndividual> individualValues = reasoner.getObjectPropertyValues(i, p);
-            Set<OWLNamedIndividual> values = asUnorderedSet(individualValues.entities());
-            String head = "The property values for " + p + " for individual " + i + " are: \n";
-            System.out.println(head);
-            for (OWLNamedIndividual ind : values) {
-                String rs = "\t" + ind + "\n";
-                System.out.println(rs);
-            }
-
-        }));
-//        
-//        onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
-//            // Put each individual in a set
-//            Stream<OWLNamedIndividual> individualValues = reasoner.objectPropertyValues(i, p);
-//            // Read the value corresponding to the DataProperty and put it in a set
-//            Set<OWLLiteral> values = asUnorderedSet(individualValues.parallelStream());
-//            // Display the property for the individual
-//            if (i.getIRI().toString().equals(owlIRI + "#" + individual)) {
-//                for (OWLLiteral ind : values) {
-//                    try {
-//                        switch (p.getIRI().getRemainder().get()) {
-//                            case "hasLastName":
-//                                pat.setName(ind.getLiteral());
-//                                break;
-//                            case "hasFirstName":
-//                                pat.setFirstName(ind.getLiteral());
-//                                break;
-//                            case "hasSex":
-//                                if (ind.getLiteral().equals("Male")) {
-//                                    pat.setSexe(Sexe.Male);
-//                                } else {
-//                                    pat.setSexe(Sexe.Female);
-//                                }
-//                                break;
-//                            case "hasDateOfBirth":
-//                                String strDate = ind.getLiteral();
-//                                DateFormat format = new SimpleDateFormat("F/L/yyyy", Locale.FRANCE);
-//                                Date date = format.parse(strDate);
-//                                System.out.println(date);
-//                                pat.setBirth(date);
-//                                break;
-//                            case "hasPlaceOfBirth":
-//                                pat.setPlaceBirth(ind.getLiteral());
-//                                break;
-//                            case "hasSocialSecurityNumber":
-//                                pat.setSocialSecurityNumber(Integer.parseInt(ind.getLiteral()));
-//                                break;
-//                            case "hasAddress":
-//                                pat.setAdress(ind.getLiteral());
-//                                break;
-//                            case "hasPhoneNumber":
-//                                pat.setPhoneNumber(Integer.parseInt(ind.getLiteral()));
-//                                break;
-//                            case "hasEmail":
-//                                pat.setEmail(ind.getLiteral());
-//                                break;
-//                            case "hasMaritalStatus":
-//                                //pat.setMaritalStatus(ind.getLiteral());
-//                                break;
-//                            case "hasInternetAccess":
-//                                //pat.setIsInternet(ind.getLiteral());
-//                                break;
-//                            case "hasSize":
-//                                pat.setSize(Float.parseFloat(ind.getLiteral()));
-//                                break;
-//                            case "hasWeight":
-//                                pat.setWeight(Float.parseFloat(ind.getLiteral()));
-//                                break;
-//                            case "hasAllergies":
-//                                pat.setAllergies(ind.getLiteral());
-//                                break;
-//                            case "hasDisease":
-//                                //pat.set
-//                                break;
-//                            case "hasPrevious":
-//
-//                                break;
-//                            case "hasValidEntourage":
-//                                if (ind.getLiteral().equals("true")) {
-//                                    pat.setValidEntourage(Boolean.TRUE);
-//                                } else {
-//                                    pat.setValidEntourage(Boolean.FALSE);
-//                                }
-//                                break;
-//                            case "hasAccessiblePlace":
-//                                if (ind.getLiteral().equals("true")) {
-//                                    pat.setPlaceAccesible(Boolean.TRUE);
-//                                } else {
-//                                    pat.setPlaceAccesible(Boolean.FALSE);
-//                                }
-//                                break;
-//                            case "hasNotes":
-//                                pat.setNotes(ind.getLiteral());
-//                                break;
-//
-//                        }
-//                    } catch (ParseException ex) {
-//                        Logger.getLogger(Ontology.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                }
-//
-//            }
-//        }));
         return pat;
     }
 
     /**
-     * Give all the infromation for a given id of a patient Method used in
+     * Give all the infromation for a given id of a patient<br />
+     * Method used in
      * searchPatient
      *
      * @param id The id of the patient to look for
@@ -440,18 +333,27 @@ public class Ontology {
      */
     public Patient searchPatient(String id, OWLReasoner reasoner) {
         Patient pat = new Patient();
-        onto.individualsInSignature().forEach(i -> onto.dataPropertiesInSignature().forEach(p -> {
-            if (i.getIRI().getRemainder().get().equals(id)) {
+        try {
+            System.out.println(onto.getAxiomCount());
+        } catch (Exception e) {
+            
+                System.out.println("Erreur ou pas ?");
+                e.printStackTrace();
+           
+        }
+        onto.individualsInSignature().forEach(i -> onto.dataPropertiesInSignature().forEach(p -> {     
+            
+            if (i.getIRI().getFragment().equals(id)) {
                 pat.setId(id);
 
                 Set<OWLLiteral> prop = reasoner.getDataPropertyValues(i, p);
                 Set<OWLLiteral> values = asUnorderedSet(prop.parallelStream());
-
+            
                 for (OWLLiteral v : values) {
-                    if (p.getIRI().getRemainder().get().equals("hasFirstName")) {
+                    if (p.getIRI().getFragment().equals("hasFirstName")) {
                         pat.setHasFirstName(v.getLiteral());
                     }
-                    if (p.getIRI().getRemainder().get().equals("hasName")) {
+                    if (p.getIRI().getFragment().equals("hasName")) {
                         pat.setHasName(v.getLiteral());
                     }
                 }
@@ -463,7 +365,10 @@ public class Ontology {
     }
     
     /**
-     * 
+     * Look in the ontology to retrieve all the disease
+     * Method to list the disease<br />
+     * Used in addPatient.jsp
+     * @return The list of Disease as a String
      */
     public List<String> getListofDisease() {
         ArrayList disease = new ArrayList<>();
@@ -473,7 +378,6 @@ public class Ontology {
                 for (OWLNamedIndividual d : useReasoner(onto).getInstances(c).getFlattened()) {
                     System.out.println(d.getIRI().getRemainder().get());
                     disease.add(d.getIRI().getRemainder().get());
-                    
                 }
             }
         });
@@ -481,8 +385,8 @@ public class Ontology {
     }
 
     /**
-     * Add all the information of the patient in the ontology Method used in
-     * addPatient
+     * Add all the information of the patient in the ontology <br />
+     * Method used in addPatient
      *
      * @param data the array with all the data that will be inserted in the owl
      * document
@@ -527,30 +431,18 @@ public class Ontology {
 
         // Save the ontology
         try {
-            //System.out.println("coucou");
-            //this.onto.saveOntology(); // PLENTE
-            //this.getOntology().saveOntology(); // PLENTE
-            //this.getOntology().saveOntology(this.getOntology().getFormat()); // PLENTE
-            //manager.saveOntology(onto); // NE FAIS RIENT
-            //onto.getOWLOntologyManager().saveOntology(onto); // Enregistre puis lecture impossible
-            //onto.saveOntology(onto.getFormat(), manager.getOntologyDocumentIRI(onto));
-            //System.out.println(manager.getOntologyDocumentIRI(this.getOntology()));
-            //System.out.println(owlIRI);
-            //System.out.println(onto.getOntologyID().getVersionIRI());
-            //man.saveOntology(onto, onto.getFormat().asPrefixOWLDocumentFormat()); // MARCHE TOUJOURS PAS
-            //man.saveOntology(onto);
-            //this.getOntology().saveOntology(); MARCHE PAS
             onto.saveOntology(onto.getFormat(), man.getOntologyDocumentIRI(onto));
-            
-            System.out.print("Sauvegarde ?????");
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-            System.out.println("-/-/-/-/-/-/-/-/-/-/-/-PLENTE-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-");
         }
 
     }
 
+    /**
+     * Add a disease and all it's information in the ontology
+     * @param d The definition of the disease to add
+     * @param name The name of the disease
+     */
     public void addDisease(Disease d, String name) {
         OWLDataFactory df = man.getOWLDataFactory();
 
@@ -596,7 +488,7 @@ public class Ontology {
     
     
     /**
-     * Add all the dataProperties in a list of axioms Method used in addPatient
+     * Add all the dataProperties in a list of axioms Method used in addPatient<br />
      * Used by the method addPatientIndividual
      *
      * @param data all the dataProperties with their values and type
@@ -661,8 +553,8 @@ public class Ontology {
     }
 
     /**
-     * Give all the informations about an intervention Method used in
-     * SearchDisease
+     * Give all the informations about an intervention <br />
+     * Method used in SearchDisease
      *
      * @param rq La Maladie
      * @return A list of Interventions
@@ -725,7 +617,7 @@ public class Ontology {
 
     /**
      * *************************************************************************
-     * Used to make the DL-Queries Work *
+     * Used to make the DL-Queries Work                                        *
      * *************************************************************************
      */
     

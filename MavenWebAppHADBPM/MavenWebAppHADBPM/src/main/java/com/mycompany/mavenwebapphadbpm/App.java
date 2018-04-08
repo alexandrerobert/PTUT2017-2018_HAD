@@ -171,10 +171,10 @@ public class App {
         ArrayList<Intervention> i = new ArrayList<Intervention>();
         i.add(new Intervention("Physiotherapy", "Therapyst", 0, UnityTime.minute, "1Day", UnityTime.minute, null, HomeCareStructure.HomeCare, null));
         
-        Disease d = new Disease();
-        d.setInterventions(i);
+        //Disease d = new Disease();
+       // d.setInterventions(i);
         
-        onto.addDisease(d, "AlexandriteAigue");
+       // onto.addDisease(d, "AlexandriteAigue");
         
 
     }

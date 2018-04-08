@@ -71,6 +71,7 @@ public class AddPatient extends HttpServlet {
 
         // Intialisation
         File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
+        //File file = new File("//home//lexr//Dropbox//Ontoflow//CodeSabrina//Ontologies//HCBPMNOntology//HCO.owl");
         //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
         //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         Ontology onto = new Ontology(file);
@@ -105,23 +106,23 @@ public class AddPatient extends HttpServlet {
 	infos.add(Disease);	
         infos.add(LastName);
 	infos.add(FirstName);
-//	infos.add(Sex);
-//	infos.add(Dob);
-//	infos.add(Pob);
-//	infos.add(SocialSecurityNumber);
-//	infos.add(Address);
-//	infos.add(PhoneNumber);
-//	infos.add(Email);
-//	infos.add(Marital);
-//	infos.add(Internet);
-//	infos.add(Size);
-//	infos.add(Weight);
-//	infos.add(Allergies);
-//	infos.add(Previous);
-//	infos.add(Entourage);
-//	infos.add(Place);
-//        infos.add(Note);
-//		
+	infos.add(Sex);
+	infos.add(Dob);
+	infos.add(Pob);
+	infos.add(SocialSecurityNumber);
+	infos.add(Address);
+	infos.add(PhoneNumber);
+	infos.add(Email);
+	infos.add(Marital);
+	infos.add(Internet);
+	infos.add(Size);
+	infos.add(Weight);
+	infos.add(Allergies);
+	infos.add(Previous);
+	infos.add(Entourage);
+	infos.add(Place);
+        infos.add(Note);
+		
 	
 
         // Add the patient to the ontology

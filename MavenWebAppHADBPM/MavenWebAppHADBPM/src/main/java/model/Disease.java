@@ -19,6 +19,9 @@ public class Disease {
     }
     
     String hasDisease;
+    /**
+     * The list of activities for the disease
+     */
     ArrayList<Intervention> interventions;
 
     public String getHasDisease() {

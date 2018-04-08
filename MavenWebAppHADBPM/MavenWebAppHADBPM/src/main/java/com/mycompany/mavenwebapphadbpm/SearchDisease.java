@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
+/**
+ * List of the Disease for the autocomplete of searchDisease.jsp
+ * @author lexr
+ */
 public class SearchDisease extends HttpServlet {
 
 
@@ -29,59 +33,27 @@ public class SearchDisease extends HttpServlet {
         String json = "{";  
         
         // Intialisation
-        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
-        //System.out.println(onto.searchDisease(reasoner, "Disease"));
+        
         
         ArrayList<String> diseases = onto.searchDisease(reasoner, "Disease");
         int liste = 0;
         
-        
-        
-
-        // Pattern of the patient name
-        //String nom = request.getParameter("nom");
         PrintWriter out = response.getWriter();
         for (String d:diseases) {
-            //System.out.println("la maladie est : " + d);
+            
             if (liste == 0) {
                 json += "\n\t\"disease\": [" + 
                         "\n\t\t{\"name\" : \"" + d + "\"},";
-                /*+
-                "\n\t\t\t\"interventions\": [\n"; */
+                
             } else {
-                json += "\n\t\t{\"name\" : \"" + d + "\"},";/* +
-                "\n\t\t\t\"interventions\": [\n"; */
+                json += "\n\t\t{\"name\" : \"" + d + "\"},";
             }
             liste++;
-            
-//                // Retrieve all the informations about a disease
-//                ArrayList<Intervention> interventions = onto.listeActions(d);
-//                
-//                for (Intervention i:interventions) {
-//                    if (cpt == 1) {
-//                        //json += "\t\t\"" + i.getName() + "\" : {\n";
-//                        json += "\t\t\t{\"name\" : \"" + i.getName() + "\",\n";
-//                    } else {
-//                        //json += "\n\t\t\"" + i.getName() + "\" : {\n";
-//                        json += "\n\t\t\t{\"name\" : \"" + i.getName() + "\",\n";
-//                    }
-//                    json += "\t\t\t\t\"typeActor\" : \"" + i.getTypeActor() + "\",\n";
-//                    json += "\t\t\t\t\"duration\" : \"" + i.getDuration()+ "\",\n";
-//                    json += "\t\t\t\t\"unityDuration\" : \"" + i.getUnityDuration()+ "\",\n";
-//                    json += "\t\t\t\t\"frequency\" : \"" + i.getFrequency() + "\",\n";
-//                    json += "\t\t\t\t\"unityFrequence\" : \"" + i.getUnityFrequency()+ "\",\n";
-//                    json += "\t\t\t\t\"timeofDay\" : \"" + i.getTimeDay()+ "\",\n";
-//                    json += "\t\t\t\t\"homeCareStructure\" : \"" + i.getHomeCareStructure()+ "\"\n\t\t},";
-//                    cpt++;
-//                }
-
-//// Delete the last coma for the actions
-//json = json.substring(0, json.length()-1);
-//json += "]},";
 
         }
         // Delete the last coma for the diseases

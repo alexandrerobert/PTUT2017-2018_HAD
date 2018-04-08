@@ -107,7 +107,7 @@ function jsonRequest(){
   var data = $.ajax({
     datatype: 'json',
     method: 'GET',
-    url:'http://localhost:8080/MavenWebAppHADBPM/infoDisease.jsp?Disease=VesicularPeritonitis',
+    url:'http://localhost:8080/MavenWebAppHADBPM/InfoDisease?disease=VesicularPeritonitis',
     sucess:function(data){
       return data;
     },
