@@ -63,7 +63,6 @@ function addMode () {
 }
 
 function jsonImport(json){
-
 stick=true;
   var formattedEventData = [];
   json.forEach(function(obj) {
@@ -81,7 +80,10 @@ stick=true;
 function jsonImport_2(json){
 
 
-console.log(json); 
+///////////////////////////////////
+console.log(json.responseText); 
+json = JSON.parse(json.responseText);
+////////////////////////////////////
 
 stick=true;
   var formattedEventData = [];
