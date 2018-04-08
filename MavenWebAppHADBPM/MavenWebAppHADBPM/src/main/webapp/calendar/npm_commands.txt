@@ -1,0 +1,8 @@
+npm init
+npm install moment
+npm install jquery
+npm install fullcalendar
+npm install jquery-clock-timepicker
+npm install flatpickr 
+npm install file-saver --save
+npm install -S ics

@@ -1,0 +1,27 @@
+[
+		{
+			"subject":"Journée de repos",
+			"description":"This is an all day event",
+			"location":"Nome, AK",
+			"begin":"2017-07-12",
+			"end":"2017-07-12"
+		},
+		{
+			"subject":"Prise de sang",
+			"description":"This is thirty minute event",
+			"location":"Nome, AK",
+			"begin":"2017-07-12T12:00:00",
+			"end":"2017-07-12T12:30:00",
+			"periodicity":"weekly",
+			"until":"2018-07-12"
+		},
+		{
+			"subject":"Changement de draps",
+			"description":"This is a one hour event",
+			"location":"Nome, AK",
+			"begin":"2017-07-12T10:00:00",
+			"end":"2017-07-12T11:00:00",
+			"periodicity":"daily",
+			"until":"2018-07-12"
+		}
+	]

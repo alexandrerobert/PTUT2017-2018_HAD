@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+
+
+
+<script src='node_modules\moment\moment.js'></script>
+<script src='node_modules\jquery\dist\jquery.js'></script>
+<script src='node_modules\fullcalendar\dist\fullcalendar.js'></script>
+
+
+<script src='node_modules\materialize-css\dist\js\materialize.js'></script>
+
+
+<script src='exemple.js'></script>
+<script src='ics_manipulator.js'></script>
+
+
+
+<script src='node_modules\ical.js\build\ical.js'></script>
+<script src='node_modules\jquery-clock-timepicker\jquery-clock-timepicker.min.js'></script>
+
+
+<script src='node_modules\flatpickr\dist\flatpickr.min.js'></script>
+
+<script src="bundle.js"></script>
+
+<!--
+<script src='bpmn_manipulator.js'></script>
+
+<script data-main="app" src="require.js"></script>
+
+
+<script data-main="main" src="require.js"></script>
+
+<script type="text/javascript" src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+
+
+
+<script type="text/javascript" src="clockpicker\dist\bootstrap-clockpicker.js"></script>
+-->
+
+<!-- <link href='node_modules\jquery-ui\themes\base\all.css' rel='stylesheet' /> -->
+<link href='node_modules\fullcalendar\dist\fullcalendar.css' rel='stylesheet' />
+
+<link href='node_modules\materialize-css\dist\css\materialize.css' rel='stylesheet' />
+
+<link href='node_modules\fullcalendar\dist\fullcalendar.print.css' rel='stylesheet' media='print' />
+
+
+<link href='node_modules\flatpickr\dist\flatpickr.min.css' rel='stylesheet' />
+
+
+<link rel="stylesheet" href="exemple.css">
+
+</head>
+<body>
+
+  <div class="row">
+   <div id='calendar' class="left_column"></div>
+   <div id='pannel' class="right_column">
+
+     <div class="cont">
+
+<!--
+       <div class="cont">
+         <button type="button" class="btn btn-primary btn-save" id="download">Load an ICS</button>
+       </div>
+
+       <a href="javascript:cal.download()">Demo</a>
+-->
+
+       Title :
+       <input type="text"  id="event_title" placeholder="Event Title" />
+     </div>
+     <br>
+     <div class="datepicker_div">
+       Date de début :
+       <input id="datepicker_debut" type="text" class="datepicker">
+     </div>
+     <br>
+
+     <br>
+     <div class="datepicker_div">
+       Date de fin
+       <input id="datepicker_fin" type="text" class="datepicker">
+     </div>
+     <br>
+
+     <!--
+     <div>
+        Heure de début :
+        <input id="timepicker_debut" type="text" class="timepicker">
+     </div>
+     <div>
+        Heure de fin :
+        <input id="timepicker_fin" type="text" class="timepicker">
+     </div>
+     -->
+  <div>
+         <input type="checkbox" class="filled-in" id="allDay" checked="checked" />
+         <label for="filled-in-box">All-Day</label>
+ </div>
+
+
+
+     <br>
+     <div class="cont">
+       <button type="button" class="btn btn-primary btn-save" id="add">Add</button>
+       <button type="button" class="btn btn-primary btn-save" id="update">Update</button>
+     </div>
+ <br>
+  <br>
+   <br>
+     <div class="cont">
+       <button type="button" class="btn btn-primary btn-save" id="export" >Export to ICS</button>
+     </div>
+
+
+
+
+   </div>
+ </div>
+
+
+
+
+</body>
+</html>
