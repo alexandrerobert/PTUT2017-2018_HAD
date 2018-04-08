@@ -1,0 +1,27 @@
+body {
+  margin: 40px 10px;
+  padding: 0;
+  font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  font-size: 14px;
+}
+#calendar {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.left_column {
+    float: left;
+    width: 70%;
+    margin: 20px;
+}
+.right_column {
+    float: left;
+    width: 30%;
+    margin: 10%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

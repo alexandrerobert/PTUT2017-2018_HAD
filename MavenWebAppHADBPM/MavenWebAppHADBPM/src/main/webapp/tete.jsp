@@ -34,4 +34,5 @@
             <li class="divider"></li>
             <li><a href="addDisease.jsp">Add disease</a></li>
             <li><a href="searchDisease.jsp">Search disease</a></li>
+            <li><a href="calendar/exemple.html">Calendar</a></li>
         </ul>
