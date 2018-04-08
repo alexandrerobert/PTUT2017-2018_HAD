@@ -33,7 +33,7 @@ public class SearchDisease extends HttpServlet {
         String json = "{";  
         
         // Intialisation
-        File file = new File("HCO.owl"); //Alexandre
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
         //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         Ontology onto = new Ontology(file);

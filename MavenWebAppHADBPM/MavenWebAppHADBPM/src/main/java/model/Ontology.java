@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxEditorParser;
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -465,20 +467,59 @@ public class Ontology {
         for (Intervention i : d.getInterventions()) {
             // Action to be linked to the disease
             OWLIndividual action = df.getOWLNamedIndividual(owlIRI + "#"+i.getName());
-            
-            OWLObjectProperty involvesAction = df.getOWLObjectProperty(owlIRI + "#involvesAction");
-            // Link the disease to the 
-            OWLObjectPropertyAssertionAxiom axiomInvolvesAction = df.getOWLObjectPropertyAssertionAxiom(involvesAction, disease,
-                    action);
+            OWLObjectProperty involvesAction = df.getOWLObjectProperty(owlIRI + "#InvolvesAction");
+            // Link the disease to the action
+            OWLObjectPropertyAssertionAxiom axiomInvolvesAction = df.getOWLObjectPropertyAssertionAxiom(involvesAction, disease, action);
             // Add the axiom to the ontology
             AddAxiom addAxiomInvolvesAction = new AddAxiom(onto, axiomInvolvesAction);
             // Save the axiom in the ontology
             man.applyChange(addAxiomInvolvesAction);
+           
+            // Create the new frequency
+            OWLIndividual freqClassDisease = df.getOWLNamedIndividual(IRI.create(owlIRI + "#Frequency" + i.getName() + name)); 
+            // Look for the class Frequency
+            OWLClass frequency = df.getOWLClass(owlIRI + "#FrequencyOfActionToDisease");  
+            // Link the new individual to the class
+            OWLClassAssertionAxiom assertionFrequency = df.getOWLClassAssertionAxiom(frequency, freqClassDisease);
+            AddAxiom axiomFrequency = new AddAxiom(onto, assertionFrequency);
+            man.applyChange(axiomFrequency); // Save the axiom in the ontology
+             
+            
+            // Look for the link hasFrequencyForAction
+            OWLObjectProperty hasFrequencyForAction = df.getOWLObjectProperty(owlIRI + "#hasFrequencyForAction");
+            // Link the Intervention to the disease
+            OWLObjectPropertyAssertionAxiom hasFrequencyForActionAxiom = df.getOWLObjectPropertyAssertionAxiom(hasFrequencyForAction, disease, freqClassDisease);
+            // Create the axiom to add in the ontology
+            AddAxiom axiomHasFrequencyForAction = new AddAxiom(onto, hasFrequencyForActionAxiom);
+            // Save the link in the ontology            
+            man.applyChange(axiomHasFrequencyForAction);
+            
+            
+            // Look for the Object Property that will link the action to it's frequency
+            OWLObjectProperty hasFrequencyForDisease =  df.getOWLObjectProperty(owlIRI + "#hasFrequencyForDisease");
+            // Link the action to it's frequency
+            OWLObjectPropertyAssertionAxiom axiomHasFrequencyForDisease = df.getOWLObjectPropertyAssertionAxiom(hasFrequencyForDisease, action, freqClassDisease);
+            AddAxiom axiomHasFrequency = new AddAxiom(onto, axiomHasFrequencyForDisease);
+            man.applyChange(axiomHasFrequency); // Save the axiom in the ontology
+            
+            
+            OWLObjectProperty hasFrequency = df.getOWLObjectProperty(owlIRI + "#hasFrequency");
+            
+            String f =  i.getFrequency();
+            String uf = i.getUnityFrequency().name();
+            OWLIndividual freq = df.getOWLNamedIndividual(owlIRI + "#" + f);
+            
+            OWLObjectPropertyAssertionAxiom objectAxiomHasFrequency = df.getOWLObjectPropertyAssertionAxiom(hasFrequency, freqClassDisease, freq);
+            AddAxiom aAxiomHasFrequency = new AddAxiom(onto, objectAxiomHasFrequency);
+            man.applyChange(aAxiomHasFrequency);
+            
+            
+            
         }
 
         // Save the ontology
         try {
-            this.getOntology().saveOntology();
+            onto.saveOntology(onto.getFormat(), man.getOntologyDocumentIRI(onto));
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -566,13 +607,13 @@ public class Ontology {
 
         // Get the actions for a disease
         String listeActs = "isInvolvedToCareDisease value " + disease;
-        for (String a : DLQuery(listeActs)) {
+        for (String action : DLQuery(listeActs)) {
             //System.out.println("Creation de l'intervetion " + a);
             // Create the action
-            Intervention inter = new Intervention(a);
+            Intervention inter = new Intervention(action);
 
             // Set the actor to the action
-            String actor = "performsAction value " + a;
+            String actor = "performsAction value " + action;
             ArrayList<String> act = DLQuery(actor);
             if (!act.isEmpty()) {
                 inter.setTypeActor(act.get(0));
@@ -583,25 +624,84 @@ public class Ontology {
             // Set the duration of the action
             
             // Set the frequency
-            String preFreq = "isFrequencyActionForDisease value " + a;
-            String freq = "isFrequencyOfAction value " + DLQuery(preFreq).get(0);
-            ArrayList<String> f = DLQuery(freq);
-            if (!f.isEmpty()) {
-                System.out.println("Frequency : " + f.toString());
-                inter.setFrequency(f.get(0));
-            }
+            String preFreq = "isFrequencyActionForDisease value " + action;
+            
+                String freq = "";
+                try {
+                    freq = "isFrequencyOfAction value " + DLQuery(preFreq).get(0);
+                } catch(Exception e ){
+                    e.printStackTrace();
+                }
+                ArrayList<String> f = DLQuery(freq);
+                if (!f.isEmpty()) {
+                    System.out.println("Frequency : " + f.toString());
+                    inter.setFrequency(f.get(0));
+                }
+            
+//            if (DLQuery(preFreq).isEmpty()) {
+//                String freq = "";
+//                try {
+//                    freq = "isFrequencyOfAction value " + DLQuery(preFreq).get(0);
+//                } catch(Exception e ){
+//                    e.printStackTrace();
+//                }
+//                ArrayList<String> f = DLQuery(freq);
+//                if (!f.isEmpty()) {
+//                    System.out.println("Frequency : " + f.toString());
+//                    inter.setFrequency(f.get(0));
+//                }
+//            }
+            
             
 
             // Set the Number of time it has to be performed
             
             // Set the moment of the day that have to be performed
-            String isTod = "isFrequencyActionForDisease value " + a;
-            String tod = "isFrequencyOfAction value " + DLQuery(isTod).get(0); //isTimeOfDayToPerformsAction
-            ArrayList<String> t = DLQuery(tod);
-            if (!t.isEmpty()) {
-                System.out.println("Frequency : " + t.toString());
-                inter.setFrequency(t.get(0));
-            }
+            String isTod = "isFrequencyActionForDisease value " + action;
+            
+                String tod = "";
+                try {
+                    //isTimeOfDayToPerformsAction
+                    tod = "isFrequencyOfAction value " + DLQuery(isTod).get(0); 
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                ArrayList<String> t = DLQuery(tod);
+                if (!t.isEmpty()) {
+                    System.out.println("Frequency : " + t.toString());
+                    System.out.println(t.get(0).toString());
+                    
+                    // Seek the nb of the Duration
+                    String pattern = "([1-9]|[/])+";
+                    Pattern exp = Pattern.compile(pattern);
+                    Matcher m = exp.matcher(t.get(0));
+                    if (m.find()) {
+                        inter.setFrequency(m.group(0));
+                    }
+                    // Seek the Duration
+                    String pattern2 = "([A-Z])\\w+";
+                    Pattern exp2 = Pattern.compile(pattern);
+                    Matcher m2 = exp2.matcher(t.get(0));
+                    if (m2.find()) {
+                        inter.setFrequency(m2.group(0));
+                    }
+                }
+            
+//            if (DLQuery(isTod).isEmpty()) {
+//                String tod = "";
+//                try {
+//                    //isTimeOfDayToPerformsAction
+//                    tod = "isFrequencyOfAction value " + DLQuery(isTod).get(0); 
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                ArrayList<String> t = DLQuery(tod);
+//                if (!t.isEmpty()) {
+//                    System.out.println("Frequency : " + t.toString());
+//                    inter.setFrequency(t.get(0));
+//                }
+//            }
+            
 
             // Add the complete intervention to the list
             actions.add(inter);

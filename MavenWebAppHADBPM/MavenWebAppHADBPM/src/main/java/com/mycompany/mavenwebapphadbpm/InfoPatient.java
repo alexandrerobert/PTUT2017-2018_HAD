@@ -44,7 +44,7 @@ public class InfoPatient extends HttpServlet {
         
         // Intialisation
         //File f = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
-        File file = new File("HCO.owl"); //ALEXANDRE
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
         //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); // Pauline
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());

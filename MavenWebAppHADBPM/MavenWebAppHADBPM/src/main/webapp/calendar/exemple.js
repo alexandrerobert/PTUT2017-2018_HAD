@@ -1,3 +1,6 @@
+
+
+$(function() { // document ready
 //var selectedEvent;
 var dp1;
 var dp2;
@@ -120,7 +123,8 @@ function jsonRequest(){
 }
 
 
-$(function() { // document ready
+
+
 
 
 

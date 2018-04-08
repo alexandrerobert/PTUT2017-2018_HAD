@@ -102,7 +102,7 @@ $(document).ready(function () {
                 + '<div class="row">'
                 + '<div class="input-field col s12">'
                 + '<i class="material-icons prefix">description</i>'
-                + '<input value="' + this + '" id="first_name-' + idInter + '" type="text" disabled >'
+                + '<input value="' + this.name + '" id="first_name-' + idInter + '" type="text" disabled >'
                 + '<label for="autocomplete-input">Action</label>'
                 + '</div>'
                 + '</div>'

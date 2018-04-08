@@ -41,8 +41,8 @@ public class App {
 
         // File file = new File("d:\\Users\\admin\\Desktop\\cours\\ptut\\HCO.owl");
         // File file = new
-        // File("//home//lexr//Dropbox//Ontoflow//CodeSabrina//Ontologies//HCBPMNOntology//HCO.owl");
-        File file = new File("HCO.owl"); //Alexandre
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        //File file = new File("HCO.owl"); //Alexandre
         //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         System.out.println("\t\t\tAffiche les classes du document");
@@ -157,25 +157,25 @@ public class App {
          */
         //Patient pat = onto.getIndividualProperties(reasoner, "Remi");
         //System.out.println(pat);
-
         onto.getOntology().getClassesInSignature().forEach(c -> {
             //System.out.println(cls);
-            if (c.getIRI().getRemainder().get().equals("Disease")) { 
+            if (c.getIRI().getRemainder().get().equals("Disease")) {
                 for (OWLNamedIndividual d : reasoner.getInstances(c).getFlattened()) {
                     System.out.println(d.getIRI().getRemainder().get());
                 }
             }
         });
-        
-        
+
         ArrayList<Intervention> i = new ArrayList<Intervention>();
-        i.add(new Intervention("Physiotherapy", "Therapyst", 0, UnityTime.minute, "1Day", UnityTime.minute, null, HomeCareStructure.HomeCare, null));
-        
-        //Disease d = new Disease();
-       // d.setInterventions(i);
-        
-       // onto.addDisease(d, "AlexandriteAigue");
-        
+        i.add(new Intervention("Physiotherapy", "Therapyst", 0, UnityTime.minute, "3    Day", UnityTime.minute, TimeDay.afternoon, HomeCareStructure.HomeCare, null));
+
+        Disease d = new Disease("Desydratation", i);
+
+        try {
+            onto.addDisease(d, "AlexandriteAigue");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

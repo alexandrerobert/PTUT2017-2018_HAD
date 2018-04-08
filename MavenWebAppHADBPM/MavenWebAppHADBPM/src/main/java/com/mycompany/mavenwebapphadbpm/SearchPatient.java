@@ -45,7 +45,7 @@ public class SearchPatient extends HttpServlet {
         int cpt = 1 ;
 
         // Intialisation
-        File file = new File("HCO.owl"); //Alexandre
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
         //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl"); //Pauline
         //File file = new File("C:\\Users\\chaum\\Documents\\Castres\\ISIS\\S8\\PTUT\\Ontoflow\\Ontoflow\\codesabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");//Anais
         Ontology onto = new Ontology(file);
