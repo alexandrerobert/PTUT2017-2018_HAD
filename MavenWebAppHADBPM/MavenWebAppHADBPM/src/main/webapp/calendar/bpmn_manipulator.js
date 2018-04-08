@@ -35,7 +35,7 @@ var xmlStr2 =
 
 
 addEvent ();
-saveToBPMN();
+//saveToBPMN();
 
 function addEvent(){
 
