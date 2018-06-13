@@ -75,52 +75,68 @@ public class AddDisease extends HttpServlet {
                 switch(inter.getJsonObject(1).values().toArray()[0].toString()){
                     case "AtHome" :
                         homeCareStructure = HomeCareStructure.AtHome;
+                        break;
                     case "HomeCare" :
                         homeCareStructure = HomeCareStructure.HomeCare;
+                        break;
                     case "MedicalAnalysisLaboratory" :
                         homeCareStructure = HomeCareStructure.MedicalAnalysisLaboratory;
+                        break;
                 }                            
                 String action = inter.getJsonObject(2).values().toArray()[0].toString();
                 String frequence = inter.getJsonObject(3).values().toArray()[0].toString();
                 UnityTime frequenceUnit = null;
                 switch(inter.getJsonObject(4).values().toArray()[0].toString()){
-                    case "day" :
-                        frequenceUnit = UnityTime.day;
-                    case "week" :
-                        frequenceUnit = UnityTime.week;
-                    case "month" :
-                        frequenceUnit = UnityTime.month;
+                    case "Day" :
+                        frequenceUnit = UnityTime.Days;
+                        break;
+                    case "Week" :
+                        frequenceUnit = UnityTime.Weeks;
+                        break;
+                    case "Month" :
+                        frequenceUnit = UnityTime.Month;
+                        break;
                 }
                 TimeDay frequenceMoment = null;
                 switch(inter.getJsonObject(5).values().toArray()[0].toString()){
-                    case "afternoon" :
-                        frequenceMoment = TimeDay.afternoon;
-                    case "evening" :
-                        frequenceMoment = TimeDay.evening;
-                    case "morning" :
-                        frequenceMoment = TimeDay.morning;
-                    case "night" :
-                        frequenceMoment = TimeDay.night;
+                    case "Afternoon" :
+                        frequenceMoment = TimeDay.Afternoon;
+                        break;
+                    case "Evening" :
+                        frequenceMoment = TimeDay.Evening;
+                        break;
+                    case "Morning" :
+                        frequenceMoment = TimeDay.Morning;
+                        break;
+                    case "Night" :
+                        frequenceMoment = TimeDay.Night;
+                        break;
                 }
                 String durationstring = inter.getJsonObject(6).values().toArray()[0].toString();
-                int duration = Integer.parseInt(durationstring);               
+                String duration = durationstring;               
                 UnityTime durationUnit = null;
                 switch(inter.getJsonObject(7).values().toArray()[0].toString()){
-                    case "day" :
-                        durationUnit = UnityTime.day;
-                    case "week" :
-                        durationUnit = UnityTime.week;
-                    case "month" :
-                        durationUnit = UnityTime.month;
-                    case "year" :
-                        durationUnit = UnityTime.year;
+                    case "Day" :
+                        durationUnit = UnityTime.Days;
+                        break;
+                    case "Week" :
+                        durationUnit = UnityTime.Weeks;
+                        break;
+                    case "Month" :
+                        durationUnit = UnityTime.Month;
+                        break;
+                    case "Year" :
+                        durationUnit = UnityTime.Year;
+                        break;
                 }
                 Intervention newInter = new Intervention(action,actor,duration,durationUnit,frequence,frequenceUnit,frequenceMoment,homeCareStructure);
+                System.out.println(newInter.toString());
                 interventionsList.add(newInter);                       
             }
             Disease newDisease = new Disease (nameDisease, interventionsList);
             onto.addDisease(newDisease, nameDisease);
         }
+        request.getRequestDispatcher("searchDisease.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

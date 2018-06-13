@@ -128,7 +128,7 @@ public class AddPatient extends HttpServlet {
         // Add the patient to the ontology
         String id = new SimpleDateFormat("ddMMyyyyhhMMss").format(Calendar.getInstance().getTime());
         onto.addPatientIndividual(infos, id);
-        
+        request.getRequestDispatcher("searchPatient.jsp").forward(request, response);
         
         
 //        

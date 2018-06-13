@@ -166,16 +166,16 @@ public class App {
             }
         });
 
-        ArrayList<Intervention> i = new ArrayList<Intervention>();
-        i.add(new Intervention("Physiotherapy", "Therapyst", 0, UnityTime.minute, "3    Day", UnityTime.minute, TimeDay.afternoon, HomeCareStructure.HomeCare, null));
-
-        Disease d = new Disease("Desydratation", i);
-
-        try {
-            onto.addDisease(d, "AlexandriteAigue");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        ArrayList<Intervention> i = new ArrayList<Intervention>();
+//        i.add(new Intervention("Physiotherapy", "Therapyst", "0", UnityTime.minute, "3    Day", UnityTime.minute, TimeDay.afternoon, HomeCareStructure.HomeCare, null));
+//
+//        Disease d = new Disease("Desydratation", i);
+//
+//        try {
+//            onto.addDisease(d, "AlexandriteAigue");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
     }
 

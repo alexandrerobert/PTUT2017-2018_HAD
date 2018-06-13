@@ -129,7 +129,7 @@ $(document).ready(function () {
                 + '</div>'
 
                 + '<div class="input-field col s2">'
-                + '<input value="years" id="first_name2" type="text" disabled >'
+                + '<input value="Day" id="first_name2" type="text" disabled >'
                 + '<label>Duration</label>'
                 + '</div>'
                 + '</div>'

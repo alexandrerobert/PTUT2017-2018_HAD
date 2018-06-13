@@ -1,11 +1,11 @@
 package model;
 
 public enum UnityTime {
-    day,
-    hour,
-    minute,
-    month,
-    seconde,
-    week,
-    year
+    Days,
+    Hour,
+    Minute,
+    Month,
+    Seconde,
+    Weeks,
+    Year
 };

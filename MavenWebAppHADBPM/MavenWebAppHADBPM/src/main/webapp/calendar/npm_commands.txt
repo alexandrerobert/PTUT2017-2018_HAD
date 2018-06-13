@@ -1,8 +1,8 @@
 npm init
 npm install moment
-npm install jquery
-npm install fullcalendar
-npm install jquery-clock-timepicker
-npm install flatpickr 
-npm install file-saver --save
-npm install -S ics
+sudo npm install jquery
+sudo npm install fullcalendar
+sudo npm install jquery-clock-timepicker
+sudo npm install flatpickr 
+sudo npm install file-saver --save
+sudo npm install -S ics

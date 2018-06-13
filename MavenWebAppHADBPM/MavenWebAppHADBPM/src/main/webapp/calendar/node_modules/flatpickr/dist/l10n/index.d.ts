@@ -1,4 +1,3 @@
-import { FlatpickrFn } from "./types/instance";
-import "./utils/polyfills";
-declare var flatpickr: FlatpickrFn;
-export default flatpickr;
+import { key, CustomLocale } from "../types/locale";
+declare const l10n: Record<key, CustomLocale>;
+export default l10n;

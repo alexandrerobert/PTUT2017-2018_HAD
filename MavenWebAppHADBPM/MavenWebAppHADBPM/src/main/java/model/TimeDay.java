@@ -1,8 +1,8 @@
 package model;
 
 public enum TimeDay {
-    morning,
-    afternoon,
-    evening,
-    night
+    Morning,
+    Afternoon,
+    Evening,
+    Night
 };

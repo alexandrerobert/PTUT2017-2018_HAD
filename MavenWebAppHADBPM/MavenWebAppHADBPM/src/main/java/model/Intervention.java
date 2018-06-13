@@ -6,7 +6,7 @@ public class Intervention {
 
     private String name;
     private String typeActor;
-    private int duration;
+    private String duration;
     private UnityTime unityDuration;
     private String frequency;
     private UnityTime unityFrequency;
@@ -17,7 +17,7 @@ public class Intervention {
         return name;
     }
 
-    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure) {
+    public Intervention(String name, String typeActor, String duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure) {
         this.name = name;
         this.typeActor = typeActor;
         this.duration = duration;
@@ -40,11 +40,11 @@ public class Intervention {
         this.typeActor = typeActor;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -87,7 +87,7 @@ public class Intervention {
         this.name = name;
     }
     
-    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure, ArrayList<String> moment) {
+    public Intervention(String name, String typeActor, String duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure, ArrayList<String> moment) {
         this.name = name;
         this.typeActor = typeActor;
         this.duration = duration;

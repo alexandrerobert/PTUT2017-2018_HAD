@@ -92,7 +92,6 @@ stick=true;
   var formattedEventData = [];
   date = 12;
   json.interventions.forEach(function(obj) {
-    console.log(obj.subject);
 
     desc = obj.typeActor + ';'+obj.frequency;
     s= "2017-07-"+date+"T12:00:00";
