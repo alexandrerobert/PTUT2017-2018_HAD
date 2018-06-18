@@ -1,0 +1,14 @@
+FROM oracle/glassfish:5.0
+
+ENV GLASSFISH_LIB=$GLASSFISH_HOME/glassfish/domains/domain1/lib/ext/
+
+# add Prometheus Java API
+
+# COPY .../simpleclient-0.0.26.jar $GLASSFISH_LIB
+
+# COPY .../simpleclient_common-0.0.26.jar $GLASSFISH_LIB
+
+COPY ./ptut.war $GLASSFISH_HOME/glassfish/domains/domain1/autodeploy/
+
+RUN yum install -y java-devel
+
